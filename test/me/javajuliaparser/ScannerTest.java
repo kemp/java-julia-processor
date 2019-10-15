@@ -9,7 +9,6 @@ class ScannerTest {
 
     @Test
     public void testSimpleExample() {
-        Scanner s = new Scanner();
-        assertTrue(s.scan());
+        // TODO
     }
 }
