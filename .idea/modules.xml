@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/java-julia-parser.iml" filepath="$PROJECT_DIR$/java-julia-parser.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java-julia-processor.iml" filepath="$PROJECT_DIR$/java-julia-processor.iml" />
     </modules>
   </component>
 </project>
