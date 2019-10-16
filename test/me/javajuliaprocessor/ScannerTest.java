@@ -2,14 +2,26 @@ package me.javajuliaprocessor;
 
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
+
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class ScannerTest {
-    // TODO Test the Scanner module (by providing input and checking the output)
-
-    @Disabled
     @Test
     void testSimpleExample() {
-        // TODO test that it calls the lexical analyzer and scanner
+        String input = "a = a + 1";
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+
+        Scanner scanner = new Scanner(printStream);
+        scanner.scan(input);
+
+        String output = byteArrayOutputStream.toString();
+
+        assertTrue(output.contains("Lexical analysis complete!"));
+        assertTrue(output.contains("Syntax analysis complete!"));
     }
 }
