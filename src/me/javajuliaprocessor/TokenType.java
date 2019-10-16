@@ -1,10 +1,5 @@
 package me.javajuliaprocessor;
 
-import java.util.HashMap;
-import java.util.Hashtable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public enum TokenType {
     INT_CONSTANT (5001, "[0-9]+"),
 //    R_CONSTANT (5002, ""), // TODO: This was found in Garrido's assignment PDF?
@@ -17,7 +12,12 @@ public enum TokenType {
     MULT_OP (5009, "\\*"),
     DIV_OP (5010, "\\/"),
     ENDIF_SK (5011, "endif"),
-    IDENTIFIER (5012, "[a-zA-Z]+");
+    IDENTIFIER (5012, "[a-zA-Z]+"),
+    LEFT_PAREN (5013, "\\("),
+    RIGHT_PAREN (5014, "\\)"),
+    LT_OP (5015, "<"),
+    GT_OP (5016, ">"),
+    NOT_EQ_OP (5017, "!");
 
     private final int id;
     private final String lexemeRegex;
