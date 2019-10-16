@@ -15,9 +15,9 @@ class Scanner {
             lexicalAnalyzer.analyze(input);
             out.println("Lexical analysis complete!");
 
-            SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(out);
-            syntaxAnalyzer.analyze(input);
-            out.println("Syntax analysis complete!");
+//            SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(out);
+//            syntaxAnalyzer.analyze(input);
+//            out.println("Syntax analysis complete!");
         } catch (UnknownTokenException e) {
             e.printStackTrace(out);
         }
