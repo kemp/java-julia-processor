@@ -1,4 +1,4 @@
-package me.javajuliaparser;
+package me.javajuliaprocessor;
 
 import java.io.PrintStream;
 

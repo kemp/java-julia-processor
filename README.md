@@ -8,3 +8,9 @@ It has three parts:
 3. Interpreter
 
 This is a school project for CS 4308 Concepts of Programming Languages.
+
+## Usage
+
+```bash
+$ java me.javajuliaprocessor.ScannerDriver [file]
+``` 
