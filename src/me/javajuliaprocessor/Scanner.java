@@ -19,7 +19,7 @@ class Scanner {
 //            syntaxAnalyzer.analyze(input);
 //            out.println("Syntax analysis complete!");
         } catch (UnknownTokenException e) {
-            e.printStackTrace(out);
+            out.println(e.getMessage());
         }
     }
 }
