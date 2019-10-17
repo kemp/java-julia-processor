@@ -1,0 +1,8 @@
+me/javajuliaprocessor/LexicalAnalyzer.class
+me/javajuliaprocessor/Scanner.class
+me/javajuliaprocessor/SyntaxAnalyzer.class
+me/javajuliaprocessor/UnknownTokenTypeException.class
+me/javajuliaprocessor/TokenType.class
+me/javajuliaprocessor/Token.class
+me/javajuliaprocessor/UnknownTokenException.class
+me/javajuliaprocessor/ScannerDriver.class
