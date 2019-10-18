@@ -24,7 +24,7 @@ class Token {
             return new Token(tokenType, input);
         } catch (UnknownTokenTypeException e) {
             if (input.length() <= 1) {
-                throw new UnknownTokenException("Token \"" + input + "\" invalid.");
+                throw new UnknownTokenException("Token \"" + input + "\" invalid");
             } else {
                 return fromString(input.substring(0, input.length() - 1));
             }
