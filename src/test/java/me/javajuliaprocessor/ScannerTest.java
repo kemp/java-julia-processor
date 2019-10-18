@@ -22,6 +22,5 @@ class ScannerTest {
         String output = byteArrayOutputStream.toString();
 
         assertTrue(output.contains("Lexical analysis complete!"));
-//        assertTrue(output.contains("Syntax analysis complete!"));
     }
 }
