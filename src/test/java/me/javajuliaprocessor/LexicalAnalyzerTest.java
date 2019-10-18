@@ -2,11 +2,10 @@ package me.javajuliaprocessor;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
-import org.junit.jupiter.params.provider.EnumSource;
+import org.junit.jupiter.params.provider.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -20,7 +19,7 @@ class LexicalAnalyzerTest {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
         LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(printStream);
-        lexicalAnalyzer.analyze(input);
+        lexicalAnalyzer.analyzeLine(input);
 
         String output = "Next token is: 5012		Next lexeme is: a\n" +
                 "Next token is: 5003		Next lexeme is: =\n" +
@@ -51,7 +50,7 @@ class LexicalAnalyzerTest {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
         LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(printStream);
-        lexicalAnalyzer.analyze(input);
+        lexicalAnalyzer.analyzeLine(input);
 
         assertEquals(output, byteArrayOutputStream.toString());
     }

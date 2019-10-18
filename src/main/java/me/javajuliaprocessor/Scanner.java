@@ -1,6 +1,7 @@
 package me.javajuliaprocessor;
 
 import java.io.PrintStream;
+import java.util.List;
 
 class Scanner {
     private PrintStream out;
@@ -9,17 +10,21 @@ class Scanner {
         this.out = printStream;
     }
 
-    void scan(String input) {
-        try {
-            LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(out);
-            lexicalAnalyzer.analyze(input);
-            out.println("Lexical analysis complete!");
+    void scan(List<String> lines) {
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(out);
 
-//            SyntaxAnalyzer syntaxAnalyzer = new SyntaxAnalyzer(out);
-//            syntaxAnalyzer.analyze(input);
-//            out.println("Syntax analysis complete!");
+        int lineNum = 1;
+
+        try {
+            for (String line : lines) {
+                lexicalAnalyzer.analyzeLine(line);
+
+                lineNum++;
+            }
+
+            out.println("Lexical analysis complete!");
         } catch (UnknownTokenException e) {
-            out.println(e.getMessage());
+            out.println(e.getMessage() + " at line #" + lineNum);
         }
     }
 }

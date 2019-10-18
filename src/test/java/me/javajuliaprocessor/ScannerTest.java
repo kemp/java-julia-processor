@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,7 +17,7 @@ class ScannerTest {
         PrintStream printStream = new PrintStream(byteArrayOutputStream);
 
         Scanner scanner = new Scanner(printStream);
-        scanner.scan(input);
+        scanner.scan(Collections.singletonList(input));
 
         String output = byteArrayOutputStream.toString();
 

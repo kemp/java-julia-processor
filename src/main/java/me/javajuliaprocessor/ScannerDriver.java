@@ -1,9 +1,10 @@
 package me.javajuliaprocessor;
 
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ScannerDriver {
     /**
@@ -17,13 +18,13 @@ public class ScannerDriver {
             return;
         }
 
-        try {
-            String input = new String(
-                Files.readAllBytes(Paths.get(args[0])
-            ), StandardCharsets.UTF_8);
+        Scanner scanner = new Scanner(System.out);
 
-            Scanner scanner = new Scanner(System.out);
-            scanner.scan(input);
+        try {
+            List<String> fileLines = Files.lines(Paths.get(args[0]))
+                    .collect(Collectors.toList());
+
+            scanner.scan(fileLines);
         } catch (IOException e) {
             System.err.println("The file could not be opened.");
             e.printStackTrace();
