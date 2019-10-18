@@ -1,6 +1,8 @@
 package me.javajuliaprocessor;
 
 public enum TokenType {
+    FLOAT_CONSTANT (5019, "[0-9]+\\.[0-9]+"),
+    STRING_CONSTANT (5022, "\"[^\"]*\""),
     INT_CONSTANT (5001, "[0-9]+"),
 //    R_CONSTANT (5002, ""), // TODO: This was found in Garrido's assignment PDF?
     ASSIGN_OP (5003, "="),
@@ -11,13 +13,22 @@ public enum TokenType {
     MINUS_OP (5008, "-"),
     MULT_OP (5009, "\\*"),
     DIV_OP (5010, "\\/"),
+    REV_DIV_OP (5024, "\\\\"),
     ENDIF_SK (5011, "endif"),
     IDENTIFIER (5012, "[a-zA-Z]+"),
     LEFT_PAREN (5013, "\\("),
     RIGHT_PAREN (5014, "\\)"),
     LT_OP (5015, "<"),
     GT_OP (5016, ">"),
-    NOT_EQ_OP (5017, "!");
+    NOT_EQ_OP (5017, "!"),
+    DOUBLE_QUOTE (5018, "\""),
+    MOD_OP (5020, "%"),
+    POWER_OP (5021, "\\^"),
+    COLON_OP (5024, ":"),
+    LEFT_BRACKET (5025, "\\["),
+    RIGHT_BRACKET (5026, "\\]"),
+    COMMA (5027, ","),
+    END_OF_STATEMENT (5023, ";");
 
     private final int id;
     private final String lexemeRegex;
