@@ -54,4 +54,27 @@ class LexicalAnalyzerTest {
 
         assertEquals(output, byteArrayOutputStream.toString());
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"test1.jl.txt", "test2.jl.txt", "test3.jl.txt", "test4.jl.txt",
+            "test5.jl.txt", "test6.jl.txt", "test7.jl.txt", "test8.jl.txt", "test9.jl.txt",
+            "test10.jl.txt", "test11.jl.txt", "test12.jl.txt"})
+    void testTest (String fileName) throws IOException {
+        InputStream inputStream = LexicalAnalyzerTest.class.getClassLoader().getResourceAsStream(fileName);
+        InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+        BufferedReader reader = new BufferedReader(streamReader);
+
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(new PrintStream(byteArrayOutputStream));
+
+        for (String line; (line = reader.readLine()) != null;) {
+            // Process line
+            try {
+                lexicalAnalyzer.analyzeLine(line);
+            } catch (UnknownTokenException e) {
+                fail(e.getMessage());
+            }
+        }
+
+    }
 }

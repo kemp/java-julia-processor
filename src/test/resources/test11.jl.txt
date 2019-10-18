@@ -1,0 +1,10 @@
+a=5
+b=7.6
+c= float(a+b)
+println(a)
+println(b)
+if c==a
+println("Julia is awesome")
+else
+println("python is awesome than julia by", " ", c)
+end

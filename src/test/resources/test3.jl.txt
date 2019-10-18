@@ -1,0 +1,36 @@
+
+
+print(x)
+
+x = 7
+print(x)
+
+j = 5 + 10
+print(j)
+
+a = 5
+b = 9
+c = a + b
+print(c)
+
+m = 26.2
+print(m * 1.61)
+
+x = 5
+if x > 0 then
+print(x)
+end
+
+n = 10
+
+while n > 0 do
+print(n)
+n = n - 1
+end
+
+x = 7
+if x % 2 == 0 then
+print(7+1)
+else
+print(7)
+end

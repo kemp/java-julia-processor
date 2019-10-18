@@ -1,0 +1,12 @@
+x = 1;
+for i = 1:5
+	println(i + 1)
+end
+for s = ["test 1", "test 2", "test 3"]
+	println(s)
+end
+while x < 5
+	println(x)
+	x++
+end
+		

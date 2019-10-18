@@ -1,0 +1,32 @@
+
+text = "This is a string."
+num = 5
+
+println(text)
+println("The following is an integer: $num")
+
+print("The sum of 5 and 6 is ")
+println(5+6)
+print("The difference of 5 from 6 is ")
+println(6-5)
+print("The product of 5 and 6 is ")
+println(5*6)
+print("The quotient of 5 over 6 is ")
+println(5/6)
+
+if (num > 1)
+print(num)
+println(" is greater than 1")
+else
+print(num)
+println(" is less than or equal to 1")
+end
+
+print("Counting from 1 to ")
+print(num)
+print(" with a for loop: ")
+for i in 1:num
+  print(i)
+print(" ")
+end
+println()
