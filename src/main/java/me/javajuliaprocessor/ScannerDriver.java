@@ -21,7 +21,7 @@ public class ScannerDriver {
      */
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: java me.javajuliaprocessor.ScannerDriver [file]");
+            System.err.println("Usage: java " + ScannerDriver.class.getName() + " [file]");
             return;
         }
 
