@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class ScannerDriver {
+public class Main {
     /**
      * Run a new scanner, accepting a file as input
      *
@@ -21,7 +21,7 @@ public class ScannerDriver {
      */
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: java " + ScannerDriver.class.getName() + " [file]");
+            System.err.println("Usage: java " + Main.class.getName() + " [file]");
             return;
         }
 

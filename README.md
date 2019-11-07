@@ -20,7 +20,7 @@ This is a school project for CS 4308 Concepts of Programming Languages.
 
 ```bash
 $ mvn package
-$ java -cp target/JavaJuliaProcessor-1.0-SNAPSHOT.jar me.javajuliaprocessor.ScannerDriver [julia_file]
+$ java -cp target/JavaJuliaProcessor-1.0-SNAPSHOT.jar me.javajuliaprocessor.Main [julia_file]
 ```
 
 Be sure to include the Julia file you want to parse

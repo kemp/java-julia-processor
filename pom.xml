@@ -41,7 +41,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>me.javajuliaprocessor.ScannerDriver</mainClass>
+                            <mainClass>me.javajuliaprocessor.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
