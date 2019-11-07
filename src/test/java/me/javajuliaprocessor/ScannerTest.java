@@ -9,8 +9,6 @@ package me.javajuliaprocessor;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -20,14 +18,16 @@ class ScannerTest {
     void testSimpleExample() {
         String input = "a = a + 1";
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        Scanner scanner = new Scanner();
 
-        Scanner scanner = new Scanner(printStream);
-        scanner.scan(Collections.singletonList(input));
+        TokenList tokens = null;
 
-        String output = byteArrayOutputStream.toString();
+        try {
+            tokens = scanner.scan(Collections.singletonList(input));
+        } catch (UnknownTokenException e) {
+           fail(e.getMessage());
+        }
 
-        assertTrue(output.contains("Lexical analysis complete!"));
+        assertEquals(5, tokens.size());
     }
 }

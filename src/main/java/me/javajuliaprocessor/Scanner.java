@@ -7,31 +7,30 @@
  */
 package me.javajuliaprocessor;
 
-import java.io.PrintStream;
 import java.util.List;
 
 class Scanner {
-    private PrintStream out;
 
-    Scanner(PrintStream printStream) {
-        this.out = printStream;
-    }
+    TokenList scan(List<String> lines) throws UnknownTokenException {
 
-    void scan(List<String> lines) {
-        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer(out);
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
 
         int lineNum = 1;
 
         try {
+            TokenList tokens = new TokenList();
+
             for (String line : lines) {
-                lexicalAnalyzer.analyzeLine(line);
+                // Add all of the analyzed tokens to the list.
+                tokens.addAll(lexicalAnalyzer.analyzeLine(line));
 
                 lineNum++;
             }
 
-            out.println("Lexical analysis complete!");
+            // Scanning complete!
+            return tokens;
         } catch (UnknownTokenException e) {
-            out.println(e.getMessage() + " at line #" + lineNum);
+            throw new UnknownTokenException(e.getMessage() + " at line #" + lineNum);
         }
     }
 }

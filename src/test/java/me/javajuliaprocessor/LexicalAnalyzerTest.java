@@ -9,9 +9,13 @@ package me.javajuliaprocessor;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.*;
+import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,19 +26,18 @@ class LexicalAnalyzerTest {
     void analyzeCompleteStatement() throws UnknownTokenException {
         String input = "a = a + 1";
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        TokenList expectedOutput = new TokenList();
 
-        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(printStream);
-        lexicalAnalyzer.analyzeLine(input);
+        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a"));
+        expectedOutput.add(new Token(TokenType.ASSIGN_OP, "="));
+        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a"));
+        expectedOutput.add(new Token(TokenType.PLUS_OP, "+"));
+        expectedOutput.add(new Token(TokenType.INT_CONSTANT, "1"));
 
-        String output = "Next token is: 5012		Next lexeme is: a\n" +
-                "Next token is: 5003		Next lexeme is: =\n" +
-                "Next token is: 5012		Next lexeme is: a\n" +
-                "Next token is: 5006		Next lexeme is: +\n" +
-                "Next token is: 5001		Next lexeme is: 1\n";
+        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
+        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input);
 
-        assertEquals(output, byteArrayOutputStream.toString());
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @ParameterizedTest
@@ -51,28 +54,28 @@ class LexicalAnalyzerTest {
         "IDENTIFIER, A",
     })
     void analyzeEachTokenType(TokenType tokenType, String input) throws UnknownTokenException {
-        String output = "Next token is: " + tokenType.getId() + "		Next lexeme is: " + input + "\n";
+        TokenList expectedOutput = new TokenList();
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        PrintStream printStream = new PrintStream(byteArrayOutputStream);
+        Token expectedToken = new Token(tokenType, input);
 
-        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(printStream);
-        lexicalAnalyzer.analyzeLine(input);
+        expectedOutput.add(expectedToken);
 
-        assertEquals(output, byteArrayOutputStream.toString());
+        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
+        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input);
+
+        assertEquals(expectedOutput, actualOutput);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"test1.jl.txt", "test2.jl.txt", "test3.jl.txt", "test4.jl.txt",
             "test5.jl.txt", "test6.jl.txt", "test7.jl.txt", "test8.jl.txt", "test9.jl.txt",
             "test10.jl.txt", "test11.jl.txt", "test12.jl.txt"})
-    void testTest (String fileName) throws IOException {
+    void testItScansAllTestFiles (String fileName) throws IOException {
         InputStream inputStream = LexicalAnalyzerTest.class.getClassLoader().getResourceAsStream(fileName);
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
 
-        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
-        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer(new PrintStream(byteArrayOutputStream));
+        LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
 
         for (String line; (line = reader.readLine()) != null;) {
             // Process line

@@ -25,16 +25,24 @@ public class ScannerDriver {
             return;
         }
 
-        Scanner scanner = new Scanner(System.out);
+        Scanner scanner = new Scanner();
 
         try {
             List<String> fileLines = Files.lines(Paths.get(args[0]))
                     .collect(Collectors.toList());
 
-            scanner.scan(fileLines);
+            TokenList tokens = scanner.scan(fileLines);
+
+            // Print out the list of tokens.
+            for (Token token : tokens) {
+                System.out.println("Next token: " + token.getType().getId() + ", Next Lexeme: " + token.getLexeme());
+            }
+
         } catch (IOException e) {
             System.err.println("The file could not be opened.");
             e.printStackTrace();
+        } catch (UnknownTokenException e) {
+            throw new RuntimeException(e);
         }
     }
 }

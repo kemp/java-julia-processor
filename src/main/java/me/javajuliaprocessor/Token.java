@@ -24,6 +24,18 @@ class Token {
         return lexeme;
     }
 
+    @Override
+    public boolean equals(Object object) {
+        if (! (object instanceof Token)) return false;
+
+        Token token = (Token)object;
+
+        if (! token.getLexeme().equals(this.getLexeme())) return false;
+        if (! token.getType().equals(this.getType())) return false;
+
+        return true;
+    }
+
     static Token fromString(String input) throws UnknownTokenException {
         try {
             TokenType tokenType = TokenType.fromLexeme(input);
