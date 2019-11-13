@@ -36,13 +36,14 @@ public class BooleanCoupling {
 	
 	public void printGrammar(){
 		System.out.println("<boolean_expression> -> <relative_op> <arithmetic_expression> <arithmetic_expression>");
-		switch(token.getType().getId()) {
-		case 5015: // Less Than op
-			System.out.println("<relative_op> -> lt_operator"); break;
-		case 5016: // Greater Than op
-			System.out.println("<relative_op> -> gt_operator"); break;
-		case 5017: // Not Equal op
-			System.out.println("<relative_op> -> ne_operator"); break;
+		if (token.getType() == TokenType.LT_OP) {
+			System.out.println("<relative_op> -> lt_operator");
+		} 
+		else if (token.getType() == TokenType.GT_OP) {
+			System.out.println("<relative_op> -> gt_operator");
+		} 
+		else if (token.getType() == TokenType.NOT_EQ_OP) {
+			System.out.println("<relative_op> -> ne_operator");
 		}
 		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
 			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());

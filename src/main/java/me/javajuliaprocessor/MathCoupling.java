@@ -35,21 +35,26 @@ public class MathCoupling {
 	
 	public void printGrammar() {
 		System.out.println("<binary_expression> -> <arithmetic_op> <arithmetic_expression> <arithmetic_expression>");
-		switch(token.getType().getId()) {
-		case 5021: // Exponent
-			System.out.println("<arithmetic_op> -> exp_operator"); break;
-		case 5009: // Multiply
-			System.out.println("<arithmetic_op> -> mul_operator"); break;
-		case 5010: // Divide
-			System.out.println("<arithmetic_op> -> div_operator"); break;
-		case 5006: // Add
-			System.out.println("<arithmetic_op> -> add_operator"); break;
-		case 5008: // Subtract
-			System.out.println("<arithmetic_op> -> sub_operator"); break;
-		case 5024: // Reverse Divide
-			System.out.println("<arithmetic_op> -> rev_div_operator"); break;
-		case 5020: // Modulo
-			System.out.println("<arithmetic_op> -> mod_operator"); break;
+		if (token.getType() == TokenType.POWER_OP) {
+			System.out.println("<arithmetic_op> -> exp_operator");
+		} 
+		else if (token.getType() == TokenType.MULT_OP) {
+			System.out.println("<arithmetic_op> -> mul_operator");
+		} 
+		else if (token.getType() == TokenType.DIV_OP) {
+			System.out.println("<arithmetic_op> -> div_operator");
+		} 
+		else if (token.getType() ==TokenType.PLUS_OP) {
+			System.out.println("<arithmetic_op> -> add_operator");
+		} 
+		else if (token.getType() == TokenType.MINUS_OP) {
+			System.out.println("<arithmetic_op> -> sub_operator");
+		} 
+		else if (token.getType() == TokenType.REV_DIV_OP) {
+			System.out.println("<arithmetic_op> -> rev_div_operator");
+		} 
+		else if (token.getType() == TokenType.MOD_OP) {
+			System.out.println("<arithmetic_op> -> mod_operator");
 		}
 		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
 			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());

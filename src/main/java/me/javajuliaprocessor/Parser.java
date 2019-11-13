@@ -24,7 +24,7 @@ public class Parser {
 		// Finding all integers and identifiers and replacing them with a value coupling
 		for(Token token : tokens) {
 			if(token.getType() == TokenType.INT_CONSTANT || token.getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
-				ValueCoupling value = new ValueCoupling(token, );
+				ValueCoupling value = new ValueCoupling(token);
 				// Create a value coupling object and replace the original in the arraylist with the coupling
 			}
 		}
