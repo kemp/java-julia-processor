@@ -5,7 +5,7 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package main.java.me.javajuliaprocessor;
 
 import java.util.List;
 

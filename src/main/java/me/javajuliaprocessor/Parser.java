@@ -5,10 +5,12 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package main.java.me.javajuliaprocessor;
+
+import java.util.ArrayList;
 
 public class Parser {
-	private TokenList tokens;
+	private ArrayList<Token> tokens;
 	public Parser(TokenList t) {
 		tokens = t;
 	}
@@ -18,7 +20,7 @@ public class Parser {
 	 * handle some form of error handling in order to make sure that the program will run 
 	 * correctly.  
 	 */
-	public TokenList parse() {
+	public void parse() {
 		// Finding all integers and identifiers and replacing them with a value coupling
 		for(Token token : tokens) {
 			if(token.getType().getId() == 5001 || token.getType().getId() == 5012) { // Literal Int or Identifier
@@ -46,6 +48,16 @@ public class Parser {
 			}
 		}
 		for(Token token : tokens) {
+			if(token.getType().getId() == 5024) {
+				// reverse divide op
+			}
+		}
+		for(Token token : tokens) {
+			if(token.getType().getId() == 5020) {
+				// modulo op
+			}
+		}
+		for(Token token : tokens) {
 			if(token.getType().getId() == 5006) {
 				//add op
 			}
@@ -63,7 +75,8 @@ public class Parser {
 				break;
 			case 5016 : // GT OP
 				break;
-			
+			case 5017 : // Not_EQ_OP
+				break;
 			}
 		}
 		// For each for assignment and print statements
