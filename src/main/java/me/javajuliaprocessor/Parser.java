@@ -23,14 +23,14 @@ public class Parser {
 	public void parse() {
 		// Finding all integers and identifiers and replacing them with a value coupling
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5001 || token.getType().getId() == 5012) { // Literal Int or Identifier
-				ValueCoupling value = new ValueCoupling(token.getType().getId(), token.getLexeme());
+			if(token.getType() == TokenType.INT_CONSTANT || token.getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
+				ValueCoupling value = new ValueCoupling(token, );
 				// Create a value coupling object and replace the original in the arraylist with the coupling
 			}
 		}
-		// Finding all the math operations
+		// Finding all the math operations !!! Need to add parenthesis !!!
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5021) { // Exponent op
+			if(token.getType() == TokenType.POWER_OP) { // Exponent op
 				/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 				 * Also ensure that the following operands are valid options for exponentiation and if not
 				 * output an error to the console and stop parsing.
@@ -38,45 +38,46 @@ public class Parser {
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5009) {
+			if(token.getType() == TokenType.MULT_OP) {
 				//multiply op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5010) {
+			if(token.getType() == TokenType.DIV_OP) {
 				//divide op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5024) {
+			if(token.getType() == TokenType.REV_DIV_OP) {
 				// reverse divide op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5020) {
+			if(token.getType() == TokenType.MOD_OP) {
 				// modulo op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5006) {
+			if(token.getType() == TokenType.PLUS_OP) {
 				//add op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5008) {
+			if(token.getType() == TokenType.MINUS_OP) {
 				//subtract op
 			}
 		}
 		
 		// Additional for each for boolean expressions
 		for(Token token : tokens) {
-			switch (token.getType().getId()) {
-			case 5015 : // LT OP
-				break;
-			case 5016 : // GT OP
-				break;
-			case 5017 : // Not_EQ_OP
-				break;
+			if(token.getType() == TokenType.LT_OP) {
+				//lt op
+			}
+			else if(token.getType() == TokenType.GT_OP) {
+				//gt op
+			}
+			else if(token.getType() == TokenType.NOT_EQ_OP) {
+				//not eq op
 			}
 		}
 		// For each for assignment and print statements

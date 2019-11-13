@@ -8,26 +8,24 @@
 package main.java.me.javajuliaprocessor;
 
 public class ValueCoupling {
-	int token;
-	String lexeme;
-	public ValueCoupling(int t, String s) {
+	Token token;
+	public ValueCoupling(Token t) {
 		token = t;
-		lexeme = s;
 	}
 	
 	public String valueType() {
-		if(token == 5001)
+		if(token.getType() == TokenType.INT_CONSTANT)
 			return "<literal_integer>";
 		else
 			return "<id>";
 	}
 	
 	public void printGrammar() {
-		if(token == 5001) {
-			System.out.println(lexeme + " -> <literal_integer>");
+		if(token.getType() == TokenType.INT_CONSTANT) {
+			System.out.println(token.getLexeme() + " -> <literal_integer>");
 		}
-		else if(token == 5012) {
-			System.out.println(lexeme + " -> <id>");
+		else if(token.getType() == TokenType.IDENTIFIER) {
+			System.out.println(token.getLexeme() + " -> <id>");
 		}
 	}
 }

@@ -8,20 +8,17 @@
 package main.java.me.javajuliaprocessor;
 
 public class AssignmentCoupling {
-	int token;
-	String lexeme;
+	Token token;
 	ValueCoupling vc1, vc2 = null;
 	MathCoupling mc = null;
 	
-	public AssignmentCoupling(int t, String s, ValueCoupling v1, ValueCoupling v2){
+	public AssignmentCoupling(Token t, ValueCoupling v1, ValueCoupling v2){
 		token = t;
-		lexeme = s;
 		vc1 = v1;
 		vc2 = v2;
 	}
-	public AssignmentCoupling(int t, String s, ValueCoupling v1, MathCoupling m){
+	public AssignmentCoupling(Token t, ValueCoupling v1, MathCoupling m){
 		token = t;
-		lexeme = s;
 		vc1 = v1;
 		mc = m;
 	}
@@ -29,7 +26,7 @@ public class AssignmentCoupling {
 	public void printGrammar() {
 		System.out.println("<assignment_statement> -> id <assignment_operator> <arithmetic_expression>");
 		vc1.printGrammar();
-		System.out.println("= -> <assignment_operator>");
+		System.out.println(token.getLexeme() + " -> <assignment_operator>");
 		if(vc2 != null) { // arithmetic expression is a literal integer or id 
 			System.out.println("<arithmetic_expression> ->" + vc2.valueType());
 			vc2.printGrammar();
