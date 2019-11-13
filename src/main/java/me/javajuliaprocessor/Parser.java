@@ -30,8 +30,8 @@ public class Parser {
 		}
 		// Finding all the math operations
 		for(Token token : tokens) {
-			if(token.getType().getId() == 5021) {
-				/* Create a exponent coupling using the operator and two following operands then replace in arraylist
+			if(token.getType().getId() == 5021) { // Exponent op
+				/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 				 * Also ensure that the following operands are valid options for exponentiation and if not
 				 * output an error to the console and stop parsing.
 				 */
