@@ -67,9 +67,7 @@ class LexicalAnalyzerTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"test1.jl.txt", "test2.jl.txt", "test3.jl.txt", "test4.jl.txt",
-            "test5.jl.txt", "test6.jl.txt", "test7.jl.txt", "test8.jl.txt", "test9.jl.txt",
-            "test10.jl.txt", "test11.jl.txt", "test12.jl.txt"})
+    @ValueSource(strings = {"test1.jl", "test2.jl", "test3.jl", "test4.jl"})
     void testItScansAllTestFiles (String fileName) throws IOException {
         InputStream inputStream = LexicalAnalyzerTest.class.getClassLoader().getResourceAsStream(fileName);
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
