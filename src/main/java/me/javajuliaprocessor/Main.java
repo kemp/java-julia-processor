@@ -44,6 +44,7 @@ public class Main {
             }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
             System.out.println("Scanning complete! Parsing...");
 
             // Convert the token list to a token or coupling list.
@@ -57,6 +58,8 @@ public class Main {
             System.out.println("Printing the grammer of the program...");
             parser.printGrammar();
 
+=======
+>>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
 =======
 >>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
         } catch (IOException e) {

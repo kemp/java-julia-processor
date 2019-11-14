@@ -40,12 +40,15 @@ public class Parser {
 				}
 		}
 <<<<<<< HEAD
+<<<<<<< HEAD
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token)
 				if(((Token) tokens.get(i)).getType() == TokenType.MUL_OP) {
 					//multiply op
 				}
 =======
+=======
+>>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
 		for(Token token : tokens) {
 			if(token.getType() == TokenType.MUL_OP) {
 				//multiply op
