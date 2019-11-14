@@ -25,7 +25,8 @@ public class Parser {
 	public ArrayList<Object> parse() { // set return type to that of ArrayList<Object> once the parse is "Completed"
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT || ((Token) tokens.get(i)).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
+				if(((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT 
+						|| ((Token) tokens.get(i)).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
 					ValueCoupling value = new ValueCoupling((Token) tokens.get(i));
 					tokens.set(i, value);
 				}
@@ -150,23 +151,47 @@ public class Parser {
 		
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.LT_OP) { //lt op
-					
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.LT_OP) { //lt op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+					else if(((Token) tokens.get(i)).getType() == TokenType.GT_OP) { //gt op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+					else if(((Token) tokens.get(i)).getType() == TokenType.NE_OP) { //not eq op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+					else if(((Token) tokens.get(i)).getType() == TokenType.EQ_OP) { //eq op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+					else if(((Token) tokens.get(i)).getType() == TokenType.GE_OP) {//ge op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+					else if(((Token) tokens.get(i)).getType() == TokenType.LE_OP) { //le op
+						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
 				}
-				else if(((Token) tokens.get(i)).getType() == TokenType.GT_OP) { //gt op
-					
-				}
-				else if(((Token) tokens.get(i)).getType() == TokenType.NE_OP) { //not eq op
-					
-				}
-				else if(((Token) tokens.get(i)).getType() == TokenType.EQ_OP) { //eq op
-					
-				}
-				else if(((Token) tokens.get(i)).getType() == TokenType.GE_OP) {//ge op
-					
-				}
-				else if(((Token) tokens.get(i)).getType() == TokenType.LE_OP) { //le op
-					
+				else {
+					//error
 				}
 			}
 		}
