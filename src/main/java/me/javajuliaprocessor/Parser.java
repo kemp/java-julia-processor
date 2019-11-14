@@ -25,66 +25,62 @@ public class Parser {
 	 * correctly.  
 	 */
 	public void parse() { // set return type to that of arraylist<object>?
-		// Finding all integers and identifiers and replacing them with a value coupling
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.INT_CONSTANT || token.getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
-				ValueCoupling value = new ValueCoupling(token);
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.INT_CONSTANT || tokens.get(i).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
+				ValueCoupling value = new ValueCoupling(tokens.get(i));
 				// Create a value coupling object and replace the original in the arraylist with the coupling
 			}
 		}
-		// Finding all the math operations !!! Need to add parenthesis !!!
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.EXP_OP) { // Exponent op
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.EXP_OP) { // Exponent op
 				/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 				 * Also ensure that the following operands are valid options for exponentiation and if not
 				 * output an error to the console and stop parsing.
 				 */
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.MUL_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.MUL_OP) {
 				//multiply op
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.DIV_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.DIV_OP) {
 				//divide op
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.REV_DIV_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.REV_DIV_OP) {
 				// reverse divide op
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.MOD_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.MOD_OP) {
 				// modulo op
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.ADD_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.ADD_OP) {
 				//add op
 			}
 		}
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.SUB_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.SUB_OP) {
 				//subtract op
 			}
 		}
 		
-		// Additional for each for boolean expressions
-		for(Token token : tokens) {
-			if(token.getType() == TokenType.LT_OP) {
+		for (int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i).getType() == TokenType.LT_OP) {
 				//lt op
 			}
-			else if(token.getType() == TokenType.GT_OP) {
+			else if(tokens.get(i).getType() == TokenType.GT_OP) {
 				//gt op
 			}
-			else if(token.getType() == TokenType.NE_OP) {
+			else if(tokens.get(i).getType() == TokenType.NE_OP) {
 				//not eq op
 			}
 		}
-		// For each for assignment and print statements
 		
 		// For each for loops and if statements
 	}
