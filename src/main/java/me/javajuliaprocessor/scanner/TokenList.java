@@ -1,4 +1,4 @@
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
 import java.util.ArrayList;
 

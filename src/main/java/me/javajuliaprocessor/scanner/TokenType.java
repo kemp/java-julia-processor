@@ -5,7 +5,7 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
 public enum TokenType {
     FLOAT_CONSTANT (5019, "[0-9]+\\.[0-9]+"),

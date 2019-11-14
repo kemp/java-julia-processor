@@ -5,8 +5,11 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
+import me.javajuliaprocessor.scanner.Scanner;
+import me.javajuliaprocessor.scanner.TokenList;
+import me.javajuliaprocessor.scanner.UnknownTokenException;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;

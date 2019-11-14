@@ -7,6 +7,8 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+
 public class PrintCoupling {
 	Token token;
 	ValueCoupling vc = null;

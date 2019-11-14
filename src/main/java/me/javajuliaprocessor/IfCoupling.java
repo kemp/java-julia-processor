@@ -7,6 +7,8 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+
 import java.util.ArrayList;
 
 public class IfCoupling {

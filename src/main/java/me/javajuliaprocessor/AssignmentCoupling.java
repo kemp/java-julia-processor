@@ -7,6 +7,8 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+
 public class AssignmentCoupling {
 	Token token;
 	ValueCoupling vc1, vc2 = null;

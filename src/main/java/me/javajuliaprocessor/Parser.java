@@ -7,6 +7,10 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+import me.javajuliaprocessor.scanner.TokenList;
+import me.javajuliaprocessor.scanner.TokenType;
+
 import java.util.ArrayList;
 
 public class Parser {

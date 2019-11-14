@@ -7,6 +7,9 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+import me.javajuliaprocessor.scanner.TokenType;
+
 public class ValueCoupling {
 	Token token;
 	public ValueCoupling(Token t) {

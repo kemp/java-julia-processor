@@ -5,13 +5,13 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
 import java.util.List;
 
-class Scanner {
+public class Scanner {
 
-    TokenList scan(List<String> lines) throws UnknownTokenException {
+    public TokenList scan(List<String> lines) throws UnknownTokenException {
 
         LexicalAnalyzer lexicalAnalyzer = new LexicalAnalyzer();
 
@@ -22,7 +22,7 @@ class Scanner {
 
             for (String line : lines) {
                 // Add all of the analyzed tokens to the list.
-                tokens.addAll(lexicalAnalyzer.analyzeLine(line));
+                tokens.addAll(lexicalAnalyzer.analyzeLine(line, lineNum));
 
                 lineNum++;
             }

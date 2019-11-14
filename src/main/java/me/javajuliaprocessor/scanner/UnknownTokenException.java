@@ -5,7 +5,10 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
-class UnknownTokenTypeException extends Exception {
+public class UnknownTokenException extends Exception {
+    UnknownTokenException(String message) {
+        super(message);
+    }
 }
