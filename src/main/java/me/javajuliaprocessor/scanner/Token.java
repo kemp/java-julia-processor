@@ -11,7 +11,7 @@ public class Token {
     private TokenType type;
     private String lexeme;
 
-    private Token(TokenType type, String lexeme) {
+    protected Token(TokenType type, String lexeme) {
         this.type = type;
         this.lexeme = lexeme;
     }
