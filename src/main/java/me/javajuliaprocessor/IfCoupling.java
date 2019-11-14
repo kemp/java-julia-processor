@@ -8,28 +8,27 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
-
 import java.util.ArrayList;
 
 public class IfCoupling {
-	Token iftoken, elsetoken, endtoken;
+	Token ifToken, elseToken, endToken;
 	BooleanCoupling bc;
 	ArrayList<Token> block1, block2;
-	Parser block1parse, block2parse;
+	Parser block1Parse, block2Parse;
 	public IfCoupling(Token ift, Token elst, Token endt, BooleanCoupling bc1, ArrayList<Token> b1, ArrayList<Token> b2) {
-		iftoken = ift;
-		elsetoken = elst;
-		endtoken = endt;
+		ifToken = ift;
+		elseToken = elst;
+		endToken = endt;
 		bc = bc1;
 		block1 = b1;
 		block2 = b2;
 	}
 	
 	private void blockParse() {
-		block1parse = new Parser(block1);
-		//block1 = parse.parse();
-		block2parse = new Parser(block2);
-		//block2 = parse.parse();
+		block1Parse = new Parser(block1);
+		//block1 = block1Parse.parse();
+		block2Parse = new Parser(block2);
+		//block2 = block2Parse.parse();
 	}
 	
 	public void printGrammar() {
@@ -37,9 +36,9 @@ public class IfCoupling {
 		System.out.println("<if_statement> -> if <boolean_expression> <block> else <block> end");
 		System.out.println("if -> if");
 		bc.printGrammar();
-		block1parse.printGrammar();
+		block1Parse.printGrammar();
 		System.out.println("else -> else");
-		block2parse.printGrammar();
+		block2Parse.printGrammar();
 		System.out.println("end -> end");
 	}
 }
