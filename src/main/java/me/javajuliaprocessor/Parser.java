@@ -22,7 +22,7 @@ public class Parser {
 	 * handle some form of error handling in order to make sure that the program will run 
 	 * correctly.  
 	 */
-	public void parse() { // set return type to that of ArrayList<Object> once the parse is "Completed"
+	public ArrayList<Object> parse() { // set return type to that of ArrayList<Object> once the parse is "Completed"
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
 				if(((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT || ((Token) tokens.get(i)).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
@@ -175,7 +175,7 @@ public class Parser {
 		
 		// Loops and if statements
 		
-		//return completed arraylist;
+		return tokens;
 	}
 	
 	private void errorOutput() {
