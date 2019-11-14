@@ -10,7 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import java.util.ArrayList;
 
-public class WhileCoupling {
+public class WhileCoupling extends Coupling {
 	Token whileToken, endToken;
 	BooleanCoupling bc;
 	ArrayList<Token> block;

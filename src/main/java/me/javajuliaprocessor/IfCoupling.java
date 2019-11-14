@@ -10,7 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import java.util.ArrayList;
 
-public class IfCoupling {
+public class IfCoupling extends Coupling {
 	Token ifToken, elseToken, endToken;
 	BooleanCoupling bc;
 	ArrayList<Token> block1, block2;
