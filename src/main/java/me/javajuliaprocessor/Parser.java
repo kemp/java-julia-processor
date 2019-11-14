@@ -77,6 +77,15 @@ public class Parser {
 			else if(((Token) tokens.get(i)).getType() == TokenType.NE_OP) {
 				//not eq op
 			}
+			else if(((Token) tokens.get(i)).getType() == TokenType.EQ_OP) {
+				//eq op
+			}
+			else if(((Token) tokens.get(i)).getType() == TokenType.GE_OP) {
+				//ge op
+			}
+			else if(((Token) tokens.get(i)).getType() == TokenType.LE_OP) {
+				//le op
+			}
 		}
 		
 		// For each for loops and if statements
