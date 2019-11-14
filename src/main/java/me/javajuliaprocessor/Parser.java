@@ -8,14 +8,11 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
-import me.javajuliaprocessor.scanner.TokenList;
 import me.javajuliaprocessor.scanner.TokenType;
 
-import java.util.ArrayList;
-
 public class Parser {
-	private ArrayList<Token> tokens;
-	public Parser(ArrayList<Token> t) {
+	private TokenOrCouplingList tokens;
+	public Parser(TokenOrCouplingList t) {
 		tokens = t;
 	}
 	
@@ -26,13 +23,13 @@ public class Parser {
 	 */
 	public void parse() { // set return type to that of arraylist<object>?
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.INT_CONSTANT || tokens.get(i).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
-				ValueCoupling value = new ValueCoupling(tokens.get(i));
+			if(((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT || ((Token) tokens.get(i)).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
+				ValueCoupling value = new ValueCoupling((Token) tokens.get(i));
 				// Create a value coupling object and replace the original in the arraylist with the coupling
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.EXP_OP) { // Exponent op
+			if(((Token) tokens.get(i)).getType() == TokenType.EXP_OP) { // Exponent op
 				/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 				 * Also ensure that the following operands are valid options for exponentiation and if not
 				 * output an error to the console and stop parsing.
@@ -40,44 +37,44 @@ public class Parser {
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.MUL_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.MUL_OP) {
 				//multiply op
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.DIV_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.DIV_OP) {
 				//divide op
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.REV_DIV_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.REV_DIV_OP) {
 				// reverse divide op
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.MOD_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.MOD_OP) {
 				// modulo op
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.ADD_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.ADD_OP) {
 				//add op
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.SUB_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.SUB_OP) {
 				//subtract op
 			}
 		}
 		
 		for (int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i).getType() == TokenType.LT_OP) {
+			if(((Token) tokens.get(i)).getType() == TokenType.LT_OP) {
 				//lt op
 			}
-			else if(tokens.get(i).getType() == TokenType.GT_OP) {
+			else if(((Token) tokens.get(i)).getType() == TokenType.GT_OP) {
 				//gt op
 			}
-			else if(tokens.get(i).getType() == TokenType.NE_OP) {
+			else if(((Token) tokens.get(i)).getType() == TokenType.NE_OP) {
 				//not eq op
 			}
 		}

@@ -8,15 +8,13 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
-import java.util.ArrayList;
-
 public class ForCoupling extends Coupling {
 	Token forToken, equalToken, endToken;
 	ValueCoupling id;
 	IterCoupling iter;
-	ArrayList<Token> block;
+	TokenOrCouplingList block;
 	Parser blockParse;
-	public ForCoupling(Token ft, Token eqt, Token et, ValueCoupling vc, IterCoupling ic, ArrayList<Token> b) {
+	public ForCoupling(Token ft, Token eqt, Token et, ValueCoupling vc, IterCoupling ic, TokenOrCouplingList b) {
 		forToken = ft;
 		equalToken = eqt;
 		endToken = et;
