@@ -33,6 +33,8 @@ public class Main {
         Scanner scanner = new Scanner();
 
         try {
+            System.out.println("Scanning...");
+
             List<String> fileLines = Files.lines(Paths.get(args[0]))
                     .collect(Collectors.toList());
 
@@ -42,6 +44,14 @@ public class Main {
             for (Token token : tokens) {
                 System.out.println("Next token: " + token.getType().getId() + ", Next Lexeme: " + token.getLexeme());
             }
+
+            System.out.println("Scanning complete! Parsing...");
+
+            Parser parser = new Parser(tokens);
+
+            parser.parse();
+
+            parser.printGrammar();
 
         } catch (IOException e) {
             System.err.println("The file could not be opened.");

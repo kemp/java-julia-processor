@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class AssignmentCoupling {
+public class AssignmentCoupling extends Coupling {
 	Token token;
 	ValueCoupling vc1, vc2 = null;
 	MathCoupling mc = null;

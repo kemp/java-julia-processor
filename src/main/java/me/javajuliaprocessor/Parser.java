@@ -14,8 +14,8 @@ import me.javajuliaprocessor.scanner.TokenType;
 import java.util.ArrayList;
 
 public class Parser {
-	private ArrayList<Token> tokens;
-	public Parser(ArrayList<Token> t) {
+	private TokenOrCouplingList tokens;
+	public Parser(TokenOrCouplingList t) {
 		tokens = t;
 	}
 	
@@ -41,6 +41,7 @@ public class Parser {
 				 */
 			}
 		}
+
 		for(Token token : tokens) {
 			if(token.getType() == TokenType.MUL_OP) {
 				//multiply op
