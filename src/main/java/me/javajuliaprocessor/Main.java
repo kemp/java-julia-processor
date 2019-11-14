@@ -47,10 +47,15 @@ public class Main {
 
             System.out.println("Scanning complete! Parsing...");
 
-            Parser parser = new Parser(tokens);
+            // Convert the token list to a token or coupling list.
+            TokenOrCouplingList tokenOrCouplingList = new TokenOrCouplingList();
+            tokenOrCouplingList.addAll(tokens);
+
+            Parser parser = new Parser(tokenOrCouplingList);
 
             parser.parse();
 
+            System.out.println("Printing the grammer of the program...");
             parser.printGrammar();
 
         } catch (IOException e) {

@@ -1,10 +1,8 @@
 package me.javajuliaprocessor.scanner;
 
-import me.javajuliaprocessor.TokenOrCouplingList;
-
 import java.util.ArrayList;
 
-public class TokenList extends TokenOrCouplingList {
+public class TokenList extends ArrayList<Token> {
 
     @Override
     public boolean equals(Object object) {
