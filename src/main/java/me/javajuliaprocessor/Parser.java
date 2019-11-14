@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class Parser {
 	private ArrayList<Token> tokens;
-	public Parser(TokenList t) {
+	public Parser(ArrayList<Token> t) {
 		tokens = t;
 	}
 	
@@ -20,7 +20,7 @@ public class Parser {
 	 * handle some form of error handling in order to make sure that the program will run 
 	 * correctly.  
 	 */
-	public void parse() {
+	public void parse() { // set return type to that of arraylist<object>?
 		// Finding all integers and identifiers and replacing them with a value coupling
 		for(Token token : tokens) {
 			if(token.getType() == TokenType.INT_CONSTANT || token.getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier

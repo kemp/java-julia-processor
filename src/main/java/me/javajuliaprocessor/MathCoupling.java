@@ -56,6 +56,7 @@ public class MathCoupling {
 		else if (token.getType() == TokenType.MOD_OP) {
 			System.out.println("<arithmetic_op> -> mod_operator");
 		}
+		
 		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
 			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());
 			System.out.println(token.getLexeme() + " -> <arithmetic_op>");

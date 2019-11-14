@@ -45,6 +45,7 @@ public class BooleanCoupling {
 		else if (token.getType() == TokenType.NOT_EQ_OP) {
 			System.out.println("<relative_op> -> ne_operator");
 		}
+		
 		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
 			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());
 			System.out.println(token.getLexeme() + " -> <relative_op>");
