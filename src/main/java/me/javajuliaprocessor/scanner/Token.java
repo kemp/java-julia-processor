@@ -10,10 +10,12 @@ package me.javajuliaprocessor.scanner;
 public class Token {
     private TokenType type;
     private String lexeme;
+    private int lineNumber;
 
-    protected Token(TokenType type, String lexeme) {
+    protected Token(TokenType type, String lexeme, int lineNumber) {
         this.type = type;
         this.lexeme = lexeme;
+        this.lineNumber = lineNumber;
     }
 
     public TokenType getType() {
@@ -22,6 +24,10 @@ public class Token {
 
     public String getLexeme() {
         return lexeme;
+    }
+
+    public int getLineNumber() {
+        return lineNumber;
     }
 
     @Override
@@ -36,16 +42,16 @@ public class Token {
         return true;
     }
 
-    protected static Token fromString(String input) throws UnknownTokenException {
+    protected static Token fromString(String input, int lineNumber) throws UnknownTokenException {
         try {
             TokenType tokenType = TokenType.fromLexeme(input);
 
-            return new Token(tokenType, input);
+            return new Token(tokenType, input, lineNumber);
         } catch (UnknownTokenTypeException e) {
             if (input.length() <= 1) {
                 throw new UnknownTokenException("Token \"" + input + "\" invalid");
             } else {
-                return fromString(input.substring(0, input.length() - 1));
+                return fromString(input.substring(0, input.length() - 1), lineNumber);
             }
         }
     }

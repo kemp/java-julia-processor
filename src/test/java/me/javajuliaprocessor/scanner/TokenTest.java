@@ -18,7 +18,7 @@ class TokenTest {
     @Test
     void unknownTokensThrowAnException() {
         Exception e = assertThrows(UnknownTokenException.class, () -> {
-            Token.fromString("###INVALID###");
+            Token.fromString("###INVALID###", 0);
         });
         assertEquals("Token \"#\" invalid", e.getMessage());
     }

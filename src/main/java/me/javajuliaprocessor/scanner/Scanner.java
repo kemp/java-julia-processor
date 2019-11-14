@@ -22,7 +22,7 @@ public class Scanner {
 
             for (String line : lines) {
                 // Add all of the analyzed tokens to the list.
-                tokens.addAll(lexicalAnalyzer.analyzeLine(line));
+                tokens.addAll(lexicalAnalyzer.analyzeLine(line, lineNum));
 
                 lineNum++;
             }

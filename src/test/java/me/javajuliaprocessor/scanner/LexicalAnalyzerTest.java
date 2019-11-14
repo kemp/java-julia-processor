@@ -28,14 +28,14 @@ class LexicalAnalyzerTest {
 
         TokenList expectedOutput = new TokenList();
 
-        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a"));
-        expectedOutput.add(new Token(TokenType.ASSIGN_OP, "="));
-        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a"));
-        expectedOutput.add(new Token(TokenType.PLUS_OP, "+"));
-        expectedOutput.add(new Token(TokenType.INT_CONSTANT, "1"));
+        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a", 0));
+        expectedOutput.add(new Token(TokenType.ASSIGN_OP, "=", 0));
+        expectedOutput.add(new Token(TokenType.IDENTIFIER, "a", 0));
+        expectedOutput.add(new Token(TokenType.PLUS_OP, "+", 0));
+        expectedOutput.add(new Token(TokenType.INT_CONSTANT, "1", 0));
 
         LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
-        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input);
+        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input, 0);
 
         assertEquals(expectedOutput, actualOutput);
     }
@@ -56,12 +56,12 @@ class LexicalAnalyzerTest {
     void analyzeEachTokenType(TokenType tokenType, String input) throws UnknownTokenException {
         TokenList expectedOutput = new TokenList();
 
-        Token expectedToken = new Token(tokenType, input);
+        Token expectedToken = new Token(tokenType, input, 0);
 
         expectedOutput.add(expectedToken);
 
         LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
-        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input);
+        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input, 0);
 
         assertEquals(expectedOutput, actualOutput);
     }
@@ -78,7 +78,7 @@ class LexicalAnalyzerTest {
         for (String line; (line = reader.readLine()) != null;) {
             // Process line
             try {
-                lexicalAnalyzer.analyzeLine(line);
+                lexicalAnalyzer.analyzeLine(line, 0);
             } catch (UnknownTokenException e) {
                 fail(e.getMessage());
             }
