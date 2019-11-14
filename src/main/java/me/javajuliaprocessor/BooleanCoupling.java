@@ -48,6 +48,15 @@ public class BooleanCoupling extends Coupling {
 		else if (token.getType() == TokenType.NE_OP) {
 			System.out.println("<relative_op> -> ne_operator");
 		}
+		else if (token.getType() == TokenType.EQ_OP) {
+			System.out.println("<relative_op> -> eq_operator");
+		}
+		else if (token.getType() == TokenType.GE_OP) {
+			System.out.println("<relative_op> -> ge_operator");
+		}
+		else if (token.getType() == TokenType.LE_OP) {
+			System.out.println("<relative_op> -> le_operator");
+		}
 		
 		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
 			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());
