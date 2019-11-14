@@ -53,61 +53,97 @@ public class Parser {
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.MUL_OP) { //multiply op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.MUL_OP) { //multiply op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else{
+					//error
 				}
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.DIV_OP) { //divide op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.DIV_OP) { //divide op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else {
+					//error
 				}
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.REV_DIV_OP) { // reverse divide op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.REV_DIV_OP) { // reverse divide op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else {
+					//error
 				}
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.MOD_OP) { // modulo op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.MOD_OP) { // modulo op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else {
+					//error
 				}
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.ADD_OP) { //add op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.ADD_OP) { //add op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else {
+					//error
 				}
 			}
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
-				if(((Token) tokens.get(i)).getType() == TokenType.SUB_OP) { //subtract op
-					MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
-					tokens.set(i, coupling);
-					tokens.remove(i + 1);
-					tokens.remove(i + 2);
+				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
+						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.SUB_OP) { //subtract op
+						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 2);
+					}
+				}
+				else {
+					//error
 				}
 			}
 		}
