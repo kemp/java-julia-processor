@@ -7,6 +7,11 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Scanner;
+import me.javajuliaprocessor.scanner.Token;
+import me.javajuliaprocessor.scanner.TokenList;
+import me.javajuliaprocessor.scanner.UnknownTokenException;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;

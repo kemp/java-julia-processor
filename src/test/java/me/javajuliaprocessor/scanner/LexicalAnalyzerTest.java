@@ -5,7 +5,7 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

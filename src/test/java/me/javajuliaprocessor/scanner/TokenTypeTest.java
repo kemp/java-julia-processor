@@ -5,8 +5,10 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
+import me.javajuliaprocessor.scanner.TokenType;
+import me.javajuliaprocessor.scanner.UnknownTokenTypeException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;

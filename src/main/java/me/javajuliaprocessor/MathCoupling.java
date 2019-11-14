@@ -7,6 +7,8 @@
  */
 package me.javajuliaprocessor;
 
+import me.javajuliaprocessor.scanner.Token;
+
 public class MathCoupling {
 	Token token;
 	ValueCoupling vc1 = null, vc2 = null;

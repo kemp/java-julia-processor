@@ -5,22 +5,22 @@
  * Instructor:   Deepa Muralidhar
  * Project:  Deliverable 2 Parser - Java
  */
-package me.javajuliaprocessor;
+package me.javajuliaprocessor.scanner;
 
-class Token {
+public class Token {
     private TokenType type;
     private String lexeme;
 
-    Token(TokenType type, String lexeme) {
+    private Token(TokenType type, String lexeme) {
         this.type = type;
         this.lexeme = lexeme;
     }
 
-    TokenType getType() {
+    public TokenType getType() {
         return type;
     }
 
-    String getLexeme() {
+    public String getLexeme() {
         return lexeme;
     }
 
@@ -36,7 +36,7 @@ class Token {
         return true;
     }
 
-    static Token fromString(String input) throws UnknownTokenException {
+    protected static Token fromString(String input) throws UnknownTokenException {
         try {
             TokenType tokenType = TokenType.fromLexeme(input);
 
