@@ -44,7 +44,8 @@ public enum TokenType {
 
     // Miscellaneous token types
     ITERATOR (8000, ":"),
-    PRINT (8001, "print");
+    PRINT (8001, "print"),
+    FUNCTION (8002, "function");
 
     private final int id;
     private final String lexemeRegex;
