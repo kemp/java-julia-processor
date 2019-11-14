@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class IfCoupling extends Coupling {
+public class IfCoupling {
 	Token ifToken, elseToken, endToken;
 	BooleanCoupling bc;
 	TokenOrCouplingList block1, block2;

@@ -11,8 +11,8 @@ import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
 public class Parser {
-	private TokenOrCouplingList tokens;
-	public Parser(TokenOrCouplingList t) {
+	private ArrayList<Token> tokens;
+	public Parser(ArrayList<Token> t) {
 		tokens = t;
 	}
 	
@@ -39,11 +39,18 @@ public class Parser {
 					 */
 				}
 		}
+<<<<<<< HEAD
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token)
 				if(((Token) tokens.get(i)).getType() == TokenType.MUL_OP) {
 					//multiply op
 				}
+=======
+		for(Token token : tokens) {
+			if(token.getType() == TokenType.MUL_OP) {
+				//multiply op
+			}
+>>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
 		}
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token)

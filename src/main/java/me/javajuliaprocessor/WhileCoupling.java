@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class WhileCoupling extends Coupling {
+public class WhileCoupling {
 	Token whileToken, endToken;
 	BooleanCoupling bc;
 	TokenOrCouplingList block;

@@ -8,7 +8,13 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
+<<<<<<< HEAD
 public class ForCoupling extends Coupling {
+=======
+import java.util.ArrayList;
+
+public class ForCoupling {
+>>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
 	Token forToken, equalToken, endToken;
 	ValueCoupling id;
 	IterCoupling iter;

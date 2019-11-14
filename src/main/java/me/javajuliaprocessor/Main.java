@@ -33,8 +33,6 @@ public class Main {
         Scanner scanner = new Scanner();
 
         try {
-            System.out.println("Scanning...");
-
             List<String> fileLines = Files.lines(Paths.get(args[0]))
                     .collect(Collectors.toList());
 
@@ -45,6 +43,7 @@ public class Main {
                 System.out.println("Next token: " + token.getType().getId() + ", Next Lexeme: " + token.getLexeme());
             }
 
+<<<<<<< HEAD
             System.out.println("Scanning complete! Parsing...");
 
             // Convert the token list to a token or coupling list.
@@ -58,6 +57,8 @@ public class Main {
             System.out.println("Printing the grammer of the program...");
             parser.printGrammar();
 
+=======
+>>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
         } catch (IOException e) {
             System.err.println("The file could not be opened.");
             e.printStackTrace();

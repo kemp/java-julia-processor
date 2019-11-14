@@ -10,7 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
-public class MathCoupling extends Coupling{
+public class MathCoupling {
 	Token token;
 	ValueCoupling vc1 = null, vc2 = null;
 	MathCoupling mc1 = null, mc2 = null;
