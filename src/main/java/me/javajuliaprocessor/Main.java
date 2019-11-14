@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -43,25 +44,19 @@ public class Main {
                 System.out.println("Next token: " + token.getType().getId() + ", Next Lexeme: " + token.getLexeme());
             }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
             System.out.println("Scanning complete! Parsing...");
 
             // Convert the token list to a token or coupling list.
-            TokenOrCouplingList tokenOrCouplingList = new TokenOrCouplingList();
-            tokenOrCouplingList.addAll(tokens);
+            ArrayList<Object> tokenObjects = new ArrayList<Object>();
+            tokenObjects.addAll(tokens);
 
-            Parser parser = new Parser(tokenOrCouplingList);
+            Parser parser = new Parser(tokenObjects);
 
             parser.parse();
 
             System.out.println("Printing the grammer of the program...");
             parser.printGrammar();
 
-=======
->>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
-=======
->>>>>>> parent of 0ebd893... Add generic Coupling, TokenOrCoupling (and list)
         } catch (IOException e) {
             System.err.println("The file could not be opened.");
             e.printStackTrace();

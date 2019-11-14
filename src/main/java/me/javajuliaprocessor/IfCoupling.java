@@ -8,13 +8,14 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
+import java.util.ArrayList;
 
 public class IfCoupling {
 	Token ifToken, elseToken, endToken;
 	BooleanCoupling bc;
-	TokenOrCouplingList block1, block2;
+	ArrayList<Object> block1, block2;
 	Parser block1Parse, block2Parse;
-	public IfCoupling(Token ift, Token elst, Token endt, BooleanCoupling bc1, TokenOrCouplingList b1, TokenOrCouplingList b2) {
+	public IfCoupling(Token ift, Token elst, Token endt, BooleanCoupling bc1, ArrayList<Object> b1, ArrayList<Object> b2) {
 		ifToken = ift;
 		elseToken = elst;
 		endToken = endt;
