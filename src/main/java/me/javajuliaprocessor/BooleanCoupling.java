@@ -45,7 +45,7 @@ public class BooleanCoupling {
 		else if (token.getType() == TokenType.GT_OP) {
 			System.out.println("<relative_op> -> gt_operator");
 		} 
-		else if (token.getType() == TokenType.NOT_EQ_OP) {
+		else if (token.getType() == TokenType.NE_OP) {
 			System.out.println("<relative_op> -> ne_operator");
 		}
 		

@@ -34,7 +34,7 @@ public class Parser {
 		}
 		// Finding all the math operations !!! Need to add parenthesis !!!
 		for(Token token : tokens) {
-			if(token.getType() == TokenType.POWER_OP) { // Exponent op
+			if(token.getType() == TokenType.EXP_OP) { // Exponent op
 				/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 				 * Also ensure that the following operands are valid options for exponentiation and if not
 				 * output an error to the console and stop parsing.
@@ -42,7 +42,7 @@ public class Parser {
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType() == TokenType.MULT_OP) {
+			if(token.getType() == TokenType.MUL_OP) {
 				//multiply op
 			}
 		}
@@ -62,12 +62,12 @@ public class Parser {
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType() == TokenType.PLUS_OP) {
+			if(token.getType() == TokenType.ADD_OP) {
 				//add op
 			}
 		}
 		for(Token token : tokens) {
-			if(token.getType() == TokenType.MINUS_OP) {
+			if(token.getType() == TokenType.SUB_OP) {
 				//subtract op
 			}
 		}
@@ -80,7 +80,7 @@ public class Parser {
 			else if(token.getType() == TokenType.GT_OP) {
 				//gt op
 			}
-			else if(token.getType() == TokenType.NOT_EQ_OP) {
+			else if(token.getType() == TokenType.NE_OP) {
 				//not eq op
 			}
 		}

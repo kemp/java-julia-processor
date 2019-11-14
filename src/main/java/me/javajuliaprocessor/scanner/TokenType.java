@@ -8,34 +8,43 @@
 package me.javajuliaprocessor.scanner;
 
 public enum TokenType {
-    FLOAT_CONSTANT (5019, "[0-9]+\\.[0-9]+"),
-    STRING_CONSTANT (5022, "\"[^\"]*\""),
-    INT_CONSTANT (5001, "[0-9]+"),
-//    R_CONSTANT (5002, ""), // TODO: This was found in Garrido's assignment PDF?
-    ASSIGN_OP (5003, "="),
-    IF_OP (5004, "if"),
-    ELSE_SK (5005, "else"),
-    PLUS_OP (5006, "\\+"),
-//    UNARY_MINUS (5007, "-"), // TODO: This was found in Garrido's assignment PDF?
-    MINUS_OP (5008, "-"),
-    MULT_OP (5009, "\\*"),
-    DIV_OP (5010, "\\/"),
-    REV_DIV_OP (5024, "\\\\"),
-    ENDIF_SK (5011, "endif"),
-    IDENTIFIER (5012, "[a-zA-Z]+"),
-    LEFT_PAREN (5013, "\\("),
-    RIGHT_PAREN (5014, "\\)"),
-    LT_OP (5015, "<"),
-    GT_OP (5016, ">"),
-    NOT_EQ_OP (5017, "!"),
-    DOUBLE_QUOTE (5018, "\""),
-    MOD_OP (5020, "%"),
-    POWER_OP (5021, "\\^"),
-    COLON_OP (5024, ":"),
-    LEFT_BRACKET (5025, "\\["),
-    RIGHT_BRACKET (5026, "\\]"),
-    COMMA (5027, ","),
-    END_OF_STATEMENT (5023, ";");
+    // Letter and number identifiers
+    IDENTIFIER (4000, "[A-Za-z]"),
+    INT_CONSTANT (4001, "[0-9]+"),
+
+    // Operators
+    ASSIGN_OP (5000, "="),
+    LT_OP (5001, "<"),
+    GT_OP (5002, ">"),
+    LE_OP (5003, "<="),
+    GE_OP (5004, ">="),
+    EQ_OP (5005, "=="),
+    NE_OP (5006, "!="),
+    ADD_OP (5007, "\\+"),
+    SUB_OP (5008, "-"),
+    MUL_OP (5009, "\\*"),
+    DIV_OP (5010, "/"),
+    MOD_OP (5011, "%"),
+    REV_DIV_OP (5012, "\\\\"),
+    EXP_OP (5013, "\\^"),
+
+    // Control structures
+    IF (6000, "if"),
+    ELSE (6001, "else"),
+
+    WHILE (6002, "while"),
+
+    FOR (6003, "for"),
+
+    END (6004, "end"),
+
+    // Parenthesis
+    LEFT_PAREN (7000, "\\("),
+    RIGHT_PAREN (7001, "\\)"),
+
+    // Miscellaneous token types
+    ITERATOR (8000, ":"),
+    PRINT (8001, "print");
 
     private final int id;
     private final String lexemeRegex;
