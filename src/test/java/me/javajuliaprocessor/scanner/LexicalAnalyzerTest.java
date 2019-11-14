@@ -31,34 +31,8 @@ class LexicalAnalyzerTest {
         expectedOutput.add(new Token(TokenType.IDENTIFIER, "a", 0));
         expectedOutput.add(new Token(TokenType.ASSIGN_OP, "=", 0));
         expectedOutput.add(new Token(TokenType.IDENTIFIER, "a", 0));
-        expectedOutput.add(new Token(TokenType.PLUS_OP, "+", 0));
+        expectedOutput.add(new Token(TokenType.ADD_OP, "+", 0));
         expectedOutput.add(new Token(TokenType.INT_CONSTANT, "1", 0));
-
-        LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
-        TokenList actualOutput = lexicalAnalyzer.analyzeLine(input, 0);
-
-        assertEquals(expectedOutput, actualOutput);
-    }
-
-    @ParameterizedTest
-    @CsvSource({
-        "INT_CONSTANT, 3",
-        "ASSIGN_OP, =",
-        "IF_OP, if",
-        "ELSE_SK, else",
-        "PLUS_OP, +",
-        "MINUS_OP, -",
-        "MULT_OP, *",
-        "DIV_OP, /",
-        "ENDIF_SK, endif",
-        "IDENTIFIER, A",
-    })
-    void analyzeEachTokenType(TokenType tokenType, String input) throws UnknownTokenException {
-        TokenList expectedOutput = new TokenList();
-
-        Token expectedToken = new Token(tokenType, input, 0);
-
-        expectedOutput.add(expectedToken);
 
         LexicalAnalyzer lexicalAnalyzer= new LexicalAnalyzer();
         TokenList actualOutput = lexicalAnalyzer.analyzeLine(input, 0);

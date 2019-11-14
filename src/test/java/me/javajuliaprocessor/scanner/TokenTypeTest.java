@@ -19,16 +19,34 @@ class TokenTypeTest {
 
     @ParameterizedTest
     @CsvSource({
-        "INT_CONSTANT, 1",
-        "ASSIGN_OP, =",
-        "IF_OP, if",
-        "ELSE_SK, else",
-        "PLUS_OP, +",
-        "MINUS_OP, -",
-        "MULT_OP, *",
-        "DIV_OP, /",
-        "ENDIF_SK, endif",
-        "IDENTIFIER, A",
+            "IDENTIFIER, A",
+            "INT_CONSTANT, 3",
+
+            "ASSIGN_OP, =",
+            "LT_OP, <",
+            "GT_OP, >",
+            "LE_OP, <=",
+            "GE_OP, >=",
+            "EQ_OP, ==",
+            "NE_OP, !=",
+            "ADD_OP, +",
+            "SUB_OP, -",
+            "MUL_OP, *",
+            "DIV_OP, /",
+            "MOD_OP, %",
+            "REV_DIV_OP, \\",
+            "EXP_OP, ^",
+
+            "IF, if",
+            "ELSE, else",
+            "WHILE, while",
+            "FOR, for",
+            "END, end",
+            "LEFT_PAREN, (",
+            "RIGHT_PAREN, )",
+
+            "ITERATOR, :",
+            "PRINT, print",
     })
     void testFromCharacter(TokenType tokenType, String string) {
         try {

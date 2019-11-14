@@ -38,19 +38,19 @@ public class MathCoupling {
 	
 	public void printGrammar() {
 		System.out.println("<binary_expression> -> <arithmetic_op> <arithmetic_expression> <arithmetic_expression>");
-		if (token.getType() == TokenType.POWER_OP) {
+		if (token.getType() == TokenType.EXP_OP) {
 			System.out.println("<arithmetic_op> -> exp_operator");
 		} 
-		else if (token.getType() == TokenType.MULT_OP) {
+		else if (token.getType() == TokenType.MUL_OP) {
 			System.out.println("<arithmetic_op> -> mul_operator");
 		} 
 		else if (token.getType() == TokenType.DIV_OP) {
 			System.out.println("<arithmetic_op> -> div_operator");
 		} 
-		else if (token.getType() ==TokenType.PLUS_OP) {
+		else if (token.getType() ==TokenType.ADD_OP) {
 			System.out.println("<arithmetic_op> -> add_operator");
 		} 
-		else if (token.getType() == TokenType.MINUS_OP) {
+		else if (token.getType() == TokenType.SUB_OP) {
 			System.out.println("<arithmetic_op> -> sub_operator");
 		} 
 		else if (token.getType() == TokenType.REV_DIV_OP) {
