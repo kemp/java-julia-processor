@@ -34,6 +34,8 @@ public class Parser {
 				}
 			}
 		}
+		
+		// Math Couplings
 		for (int i = 0; i < tokens.size(); i++) {
 			if (tokens.get(i) instanceof Token) {
 				if (((Token) tokens.get(i)).getType() == TokenType.EXP_OP) { // Exponent op
@@ -257,7 +259,7 @@ public class Parser {
 						&& !(tokens.get(i + 1) instanceof IterCoupling)) {
 					if ((tokens.get(i - 1) instanceof ValueCoupling
 							&& ((ValueCoupling) tokens.get(i - 1)).token.getType() == TokenType.IDENTIFIER)
-							&& (tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling)) { // erroe
+							&& (tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)) { // error
 																													// checker
 						AssignmentCoupling coupling = new AssignmentCoupling((Token) tokens.get(i), tokens.get(i - 1),
 								tokens.get(i + 1));
@@ -271,7 +273,7 @@ public class Parser {
 			}
 			if (tokens.get(i) instanceof Token) { // Print Statement
 				if (((Token) tokens.get(i)).getType() == TokenType.PRINT) {
-					if (tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling) { // error
+					if (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling) { // error
 																											// check for
 																											// print
 						PrintCoupling coupling = new PrintCoupling((Token) tokens.get(i), tokens.get(i + 2));
@@ -448,32 +450,33 @@ public class Parser {
 			((ValueCoupling) tokens.get(1)).printGrammar();
 		}
 		for(int i = 4; i < tokens.size(); i++) {
-			if(tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
-					|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
-					|| tokens.get(i + 1) instanceof PrintCoupling) {
+			//if(tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
+			//		|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
+			//		|| tokens.get(i + 1) instanceof PrintCoupling) {
 				System.out.println("<block> -> <statement> <block>");
 				if(tokens.get(i) instanceof IfCoupling) {
 					System.out.println("<statement> -> <if_statement>");
 					((IfCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof ForCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <for_statement>");
 					((ForCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof WhileCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <while_statement>");
 					((WhileCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof AssignmentCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <assignment_statement>");
 					((AssignmentCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof PrintCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <print_statement>");
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
-			}
-			else {
+				//System.out.println("" + tokens.get(i).getClass());
+			//}
+			/*else {
 				System.out.println("<block> -> <statement>");
 				if(tokens.get(i) instanceof IfCoupling) {
 					System.out.println("<statement> -> <if_statement>");
@@ -496,7 +499,7 @@ public class Parser {
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
 				System.out.println("end -> end");
-			}
+			}*/
 		}
 	}
 }
