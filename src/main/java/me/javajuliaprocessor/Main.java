@@ -38,6 +38,7 @@ public class Main {
                     .collect(Collectors.toList());
 
             TokenList tokens = scanner.scan(fileLines);
+            System.out.println("Beginning to Scan... ");
 
             // Print out the list of tokens.
             for (Token token : tokens) {
@@ -46,7 +47,7 @@ public class Main {
 
             System.out.println("Scanning complete! Parsing...");
 
-            // Convert the token list to a token or coupling list.
+            // Convert the token list to an ArrayList of objects.
             ArrayList<Object> tokenObjects = new ArrayList<Object>();
             tokenObjects.addAll(tokens);
 
