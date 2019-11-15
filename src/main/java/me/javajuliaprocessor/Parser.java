@@ -22,7 +22,7 @@ public class Parser {
 	 * handle some form of error handling in order to make sure that the program will run 
 	 * correctly.  
 	 */
-	public ArrayList<Object> parse() { // set return type to that of ArrayList<Object> once the parse is "Completed"
+	public ArrayList<Object> parse() {
 		for (int i = 0; i < tokens.size(); i++) {
 			if(tokens.get(i) instanceof Token) {
 				if(((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT 
@@ -41,14 +41,10 @@ public class Parser {
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
-						/* Create a MathCoupling using the operator and two following operands then replace in arraylist
-						 * Also ensure that the following operands are valid options for exponentiation and if not
-						 * output an error to the console and stop parsing.
-						 */
 					}
 				}
 				else {
-					// make call to errorOutput or directly output error
+					//error
 				}
 			}
 		}
@@ -149,7 +145,7 @@ public class Parser {
 			}
 		}
 		
-		for (int i = 0; i < tokens.size(); i++) {
+		for (int i = 0; i < tokens.size(); i++) { // Boolean Couplings
 			if(tokens.get(i) instanceof Token) {
 				if((tokens.get(i +1) instanceof ValueCoupling || tokens.get(i +1) instanceof MathCoupling)
 						&& (tokens.get(i + 2) instanceof ValueCoupling || tokens.get(i + 2) instanceof MathCoupling)) {
@@ -229,12 +225,71 @@ public class Parser {
 		}
 		
 		// Loops and if statements
+		for(int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i) instanceof Token) {
+				if(tokens.get(i + 1) instanceof BooleanCoupling) { // error check
+					if(((Token) tokens.get(i)).getType() == TokenType.IF) {
+						int ifCount = 0, endCount = 0, elseIndex = i, endIndex = i;
+						ArrayList<Object> ifBlock = new ArrayList<Object>(), elseBlock = new ArrayList<Object>();
+						for(int j = i; j < tokens.size(); j++) {
+							if(tokens.get(j) instanceof Token) {
+								if(((Token) tokens.get(j)).getType() == TokenType.IF) {
+									ifCount++;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.ELSE && ifCount == 0) { // Correct else
+									elseIndex = j;
+									break;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.ELSE && ifCount != 0){ // Incorrect else
+									ifCount--;
+								}
+							}
+						}
+						if(elseIndex == i) {
+							//error due to not enough elses
+						}
+						for(int j = elseIndex; j < tokens.size(); j++) {
+							if(tokens.get(j) instanceof Token) {
+								if(((Token) tokens.get(j)).getType() == TokenType.ELSE || ((Token) tokens.get(j)).getType() == TokenType.WHILE 
+										|| ((Token) tokens.get(j)).getType() == TokenType.FOR) {
+									endCount++;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.END && endCount == 0) { // Correct end
+									endIndex = j;
+									break;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.END && ifCount != 0) { // Incorrect end
+									endCount--;
+								}
+							}
+						}
+						if(endIndex == i) {
+							//error due to not enough ends
+						}
+						
+						for(int j = i + 2; j < elseIndex; j++) {
+							ifBlock.add(tokens.get(j));
+						}
+						for(int j = elseIndex + 1; j < endIndex; j++) {
+							elseBlock.add(tokens.get(j));
+						}
+						IfCoupling coupling = new IfCoupling((Token)tokens.get(i), (Token)tokens.get(elseIndex), (Token)tokens.get(endIndex)
+								, tokens.get(i + 1), ifBlock, elseBlock);
+						tokens.set(i, coupling);
+						for(int j = i; j < endIndex; j++) {
+							tokens.remove(j + 1);
+						}
+					}
+				}
+				else {
+					//error
+				}
+			}
+		}
+		
+		// Loops (For and While)
 		
 		return tokens;
-	}
-	
-	private void errorOutput() {
-		// call to this when incorrect syntax is found
 	}
 	
 	public void printGrammar() {

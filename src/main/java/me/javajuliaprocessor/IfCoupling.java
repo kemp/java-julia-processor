@@ -12,14 +12,14 @@ import java.util.ArrayList;
 
 public class IfCoupling {
 	Token ifToken, elseToken, endToken;
-	BooleanCoupling bc;
+	Object oc;
 	ArrayList<Object> block1, block2;
 	Parser block1Parse, block2Parse;
-	public IfCoupling(Token ift, Token elst, Token endt, BooleanCoupling bc1, ArrayList<Object> b1, ArrayList<Object> b2) {
+	public IfCoupling(Token ift, Token elst, Token endt, Object bc1, ArrayList<Object> b1, ArrayList<Object> b2) {
 		ifToken = ift;
 		elseToken = elst;
 		endToken = endt;
-		bc = bc1;
+		oc = bc1;
 		block1 = b1;
 		block2 = b2;
 	}
@@ -35,7 +35,7 @@ public class IfCoupling {
 		blockParse();
 		System.out.println("<if_statement> -> if <boolean_expression> <block> else <block> end");
 		System.out.println("if -> if");
-		bc.printGrammar();
+		((BooleanCoupling) oc).printGrammar();
 		block1Parse.printGrammar();
 		System.out.println("else -> else");
 		block2Parse.printGrammar();
