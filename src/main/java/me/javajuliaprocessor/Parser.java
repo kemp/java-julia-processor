@@ -192,40 +192,6 @@ public class Parser {
 			}
 		}
 		
-		// Assignment and Print statements
-		for(int i = 0; i < tokens.size(); i++) {
-			if(tokens.get(i) instanceof Token) {
-				if((tokens.get(i - 1) instanceof ValueCoupling && ((ValueCoupling)tokens.get(i - 1)).token.getType() == TokenType.IDENTIFIER) 
-						&& (tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling)) {
-					if(((Token) tokens.get(i)).getType() == TokenType.ASSIGN_OP) {
-						AssignmentCoupling coupling = new AssignmentCoupling((Token) tokens.get(i), tokens.get(i - 1), tokens.get(i + 1));
-						tokens.set(i, coupling);
-						tokens.remove(i - 1);
-						tokens.remove(i + 1);
-					}
-				}
-				else{
-					//error
-				}
-			}
-			if(tokens.get(i) instanceof Token) {
-				if(tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling) { // error check for print
-					if(((Token) tokens.get(i)).getType() == TokenType.PRINT) {
-						PrintCoupling coupling = new PrintCoupling((Token) tokens.get(i), tokens.get(i + 2));
-						tokens.set(i, coupling);
-						tokens.remove(i + 1);
-						tokens.remove(i + 1);
-						tokens.remove(i + 1);
-					}
-				}
-				else {
-					//error
-				}
-			}
-		}
-		
-		// Loops and if statements
-		
 		for(int i = 0; i < tokens.size(); i++) { // Iterators
 			if(tokens.get(i) instanceof Token) {
 				if((tokens.get(i - 1) instanceof ValueCoupling || tokens.get(i - 1) instanceof MathCoupling) 
@@ -243,13 +209,47 @@ public class Parser {
 			}
 		}
 		
+		// Assignment and Print statements
+		for(int i = 0; i < tokens.size(); i++) { // Assignment Statement
+			if(tokens.get(i) instanceof Token) {
+				if((tokens.get(i - 1) instanceof ValueCoupling && ((ValueCoupling)tokens.get(i - 1)).token.getType() == TokenType.IDENTIFIER) 
+						&& (tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.ASSIGN_OP && !(tokens.get(i + 1) instanceof IterCoupling)) {
+						AssignmentCoupling coupling = new AssignmentCoupling((Token) tokens.get(i), tokens.get(i - 1), tokens.get(i + 1));
+						tokens.set(i, coupling);
+						tokens.remove(i - 1);
+						tokens.remove(i + 1);
+					}
+				}
+				else{
+					//error
+				}
+			}
+			if(tokens.get(i) instanceof Token) { // Print Statement
+				if(tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling) { // error check for print
+					if(((Token) tokens.get(i)).getType() == TokenType.PRINT) {
+						PrintCoupling coupling = new PrintCoupling((Token) tokens.get(i), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 1);
+						tokens.remove(i + 1);
+					}
+				}
+				else {
+					//error
+				}
+			}
+		}
+		
+		// Loops and if statements
+		
 		for(int i = 0; i < tokens.size(); i++) { // If Statement
 			if(tokens.get(i) instanceof Token) {
 				if(tokens.get(i + 1) instanceof BooleanCoupling) { // error check
 					if(((Token) tokens.get(i)).getType() == TokenType.IF) {
 						int ifCount = 0, endCount = 0, elseIndex = i, endIndex = i;
 						ArrayList<Object> ifBlock = new ArrayList<Object>(), elseBlock = new ArrayList<Object>();
-						for(int j = i; j < tokens.size(); j++) {
+						for(int j = i + 1; j < tokens.size(); j++) {
 							if(tokens.get(j) instanceof Token) {
 								if(((Token) tokens.get(j)).getType() == TokenType.IF) {
 									ifCount++;
@@ -266,7 +266,7 @@ public class Parser {
 						if(elseIndex == i) {
 							//error due to not enough elses
 						}
-						for(int j = elseIndex; j < tokens.size(); j++) {
+						for(int j = elseIndex + 1; j < tokens.size(); j++) {
 							if(tokens.get(j) instanceof Token) {
 								if(((Token) tokens.get(j)).getType() == TokenType.ELSE || ((Token) tokens.get(j)).getType() == TokenType.WHILE 
 										|| ((Token) tokens.get(j)).getType() == TokenType.FOR) {
@@ -305,7 +305,49 @@ public class Parser {
 			}
 		}
 		
-		
+		for(int i = 0; i < tokens.size(); i++) { // For Loop
+			if(tokens.get(i) instanceof Token) {
+				if((tokens.get(i + 1) instanceof ValueCoupling && ((ValueCoupling)tokens.get(i + 1)).token.getType() == TokenType.IDENTIFIER)
+						&& ((Token) tokens.get(i + 2)).getType() == TokenType.ASSIGN_OP 
+						&& tokens.get(i + 3) instanceof IterCoupling) { // error checker
+					if(((Token) tokens.get(i)).getType() == TokenType.FOR) {
+						int endCount = 0, endIndex = i;
+						ArrayList<Object> forBlock = new ArrayList<Object>();
+						for(int j = i + 1; j < tokens.size(); j++) {
+							if(tokens.get(j) instanceof Token) {
+								if(((Token) tokens.get(j)).getType() == TokenType.ELSE || ((Token) tokens.get(j)).getType() == TokenType.WHILE 
+										|| ((Token) tokens.get(j)).getType() == TokenType.FOR) {
+									endCount++;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.END && endCount == 0) { // Correct end
+									endIndex = j;
+									break;
+								}
+								else if(((Token) tokens.get(j)).getType() == TokenType.END && endCount != 0){ // Incorrect end
+									endCount--;
+								}
+							}
+						}
+						if(endIndex == i) {
+							//error due to not enough ends
+						}
+						
+						for(int j = i + 4; j < endIndex; j++) {
+							forBlock.add(tokens.get(j));
+						}
+						ForCoupling coupling = new ForCoupling((Token) tokens.get(i), (Token) tokens.get(i + 2), (Token) tokens.get(endIndex)
+								, tokens.get(i + 1), tokens.get(i + 3), forBlock);
+						tokens.set(i, coupling);
+						for(int j = i; j < endIndex; j++) {
+							tokens.remove(j + 1);
+						}
+					}
+				}
+				else {
+					// error
+				}
+			}
+		}
 		
 		return tokens;
 	}

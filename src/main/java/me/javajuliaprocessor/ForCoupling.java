@@ -12,11 +12,10 @@ import java.util.ArrayList;
 public class ForCoupling {
 
 	Token forToken, equalToken, endToken;
-	ValueCoupling id;
-	IterCoupling iter;
+	Object id, iter;
 	ArrayList<Object> block;
 	Parser blockParse;
-	public ForCoupling(Token ft, Token eqt, Token et, ValueCoupling vc, IterCoupling ic, ArrayList<Object> b) {
+	public ForCoupling(Token ft, Token eqt, Token et, Object vc, Object ic, ArrayList<Object> b) {
 		forToken = ft;
 		equalToken = eqt;
 		endToken = et;
@@ -34,9 +33,9 @@ public class ForCoupling {
 		blockParse();
 		System.out.println("<for_statement> -> for id = <iter> <block> end");
 		System.out.println("for -> for");
-		id.printGrammar();
+		((ValueCoupling) id).printGrammar();
 		System.out.println("= -> <assignment_operator>");
-		iter.printGrammar();
+		((IterCoupling) iter).printGrammar();
 		blockParse.printGrammar();
 		System.out.println("end -> end");
 	}
