@@ -40,7 +40,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 						/* Create a MathCoupling using the operator and two following operands then replace in arraylist
 						 * Also ensure that the following operands are valid options for exponentiation and if not
 						 * output an error to the console and stop parsing.
@@ -60,7 +60,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else{
@@ -76,7 +76,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -92,7 +92,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -108,7 +108,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -124,7 +124,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -140,7 +140,7 @@ public class Parser {
 						MathCoupling coupling = new MathCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -157,37 +157,37 @@ public class Parser {
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 					else if(((Token) tokens.get(i)).getType() == TokenType.GT_OP) { //gt op
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 					else if(((Token) tokens.get(i)).getType() == TokenType.NE_OP) { //not eq op
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 					else if(((Token) tokens.get(i)).getType() == TokenType.EQ_OP) { //eq op
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 					else if(((Token) tokens.get(i)).getType() == TokenType.GE_OP) {//ge op
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 					else if(((Token) tokens.get(i)).getType() == TokenType.LE_OP) { //le op
 						BooleanCoupling coupling = new BooleanCoupling((Token) tokens.get(i), tokens.get(i + 1), tokens.get(i + 2));
 						tokens.set(i, coupling);
 						tokens.remove(i + 1);
-						tokens.remove(i + 2);
+						tokens.remove(i + 1);
 					}
 				}
 				else {
@@ -209,6 +209,20 @@ public class Parser {
 					}
 				}
 				else{
+					//error
+				}
+			}
+			if(tokens.get(i) instanceof Token) {
+				if(tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling) { // error check for print
+					if(((Token) tokens.get(i)).getType() == TokenType.PRINT) {
+						PrintCoupling coupling = new PrintCoupling((Token) tokens.get(i), tokens.get(i + 2));
+						tokens.set(i, coupling);
+						tokens.remove(i + 1);
+						tokens.remove(i + 1);
+						tokens.remove(i + 1);
+					}
+				}
+				else {
 					//error
 				}
 			}
