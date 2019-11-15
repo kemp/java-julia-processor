@@ -26,7 +26,7 @@ public class ForCoupling {
 	
 	private void blockParse() {
 		blockParse = new Parser(block);
-		//block = blockParse.parse();
+		block = blockParse.parse();
 	}
 	
 	public void printGrammar() {

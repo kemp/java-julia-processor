@@ -26,9 +26,9 @@ public class IfCoupling {
 	
 	private void blockParse() {
 		block1Parse = new Parser(block1);
-		//block1 = block1Parse.parse();
+		block1 = block1Parse.parse();
 		block2Parse = new Parser(block2);
-		//block2 = block2Parse.parse();
+		block2 = block2Parse.parse();
 	}
 	
 	public void printGrammar() {

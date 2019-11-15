@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public class WhileCoupling {
 	Token whileToken, endToken;
-	BooleanCoupling bc;
+	Object bc;
 	ArrayList<Object> block;
 	Parser blockParse;
-	public WhileCoupling(Token wt, Token et, BooleanCoupling bc1, ArrayList<Object> b) {
+	public WhileCoupling(Token wt, Token et, Object bc1, ArrayList<Object> b) {
 		whileToken = wt;
 		endToken = et;
 		bc = bc1;
@@ -24,14 +24,14 @@ public class WhileCoupling {
 	
 	private void blockParse() {
 		blockParse = new Parser(block);
-		//block = blockParse.parse();
+		block = blockParse.parse();
 	}
 	
 	public void printGrammar() {
 		blockParse();
 		System.out.println("<while_statement> -> while <boolean_expression> <block> end");
 		System.out.println("while -> while");
-		bc.printGrammar();
+		((BooleanCoupling) bc).printGrammar();
 		blockParse.printGrammar();
 		System.out.println("end -> end");
 	}
