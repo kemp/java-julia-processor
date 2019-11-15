@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class IterCoupling extends Coupling {
+public class IterCoupling {
 	Token colonToken;
 	ValueCoupling vc1 = null, vc2 = null;
 	MathCoupling mc1 = null, mc2 = null;

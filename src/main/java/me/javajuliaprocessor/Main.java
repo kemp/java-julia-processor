@@ -16,6 +16,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 public class Main {
@@ -33,8 +34,6 @@ public class Main {
         Scanner scanner = new Scanner();
 
         try {
-            System.out.println("Scanning...");
-
             List<String> fileLines = Files.lines(Paths.get(args[0]))
                     .collect(Collectors.toList());
 
@@ -48,10 +47,10 @@ public class Main {
             System.out.println("Scanning complete! Parsing...");
 
             // Convert the token list to a token or coupling list.
-            TokenOrCouplingList tokenOrCouplingList = new TokenOrCouplingList();
-            tokenOrCouplingList.addAll(tokens);
+            ArrayList<Object> tokenObjects = new ArrayList<Object>();
+            tokenObjects.addAll(tokens);
 
-            Parser parser = new Parser(tokenOrCouplingList);
+            Parser parser = new Parser(tokenObjects);
 
             parser.parse();
 

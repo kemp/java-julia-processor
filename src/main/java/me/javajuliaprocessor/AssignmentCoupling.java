@@ -9,33 +9,27 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class AssignmentCoupling extends Coupling {
+public class AssignmentCoupling {
 	Token token;
-	ValueCoupling vc1, vc2 = null;
-	MathCoupling mc = null;
+	Object oc1, oc2;
 	
-	public AssignmentCoupling(Token t, ValueCoupling v1, ValueCoupling v2){
+	public AssignmentCoupling(Token t, Object o1, Object o2){
 		token = t;
-		vc1 = v1;
-		vc2 = v2;
-	}
-	public AssignmentCoupling(Token t, ValueCoupling v1, MathCoupling m){
-		token = t;
-		vc1 = v1;
-		mc = m;
+		oc1 = o1;
+		oc2 = o2;
 	}
 	
 	public void printGrammar() {
 		System.out.println("<assignment_statement> -> id <assignment_operator> <arithmetic_expression>");
-		vc1.printGrammar();
+		((ValueCoupling) oc1).printGrammar();
 		System.out.println(token.getLexeme() + " -> <assignment_operator>");
-		if(vc2 != null) { // arithmetic expression is a literal integer or id 
-			System.out.println("<arithmetic_expression> ->" + vc2.valueType());
-			vc2.printGrammar();
+		if(oc2 instanceof ValueCoupling) { // arithmetic expression is a literal integer or id 
+			System.out.println("<arithmetic_expression> ->" + ((ValueCoupling) oc2).valueType());
+			((ValueCoupling) oc2).printGrammar();
 		}
 		else { // arithmetic expression is a binary expression
 			System.out.println("<arithmetic_expression> -> <binary_expression>");
-			mc.printGrammar();
+			((MathCoupling) oc2).printGrammar();
 		}
 	}
 }

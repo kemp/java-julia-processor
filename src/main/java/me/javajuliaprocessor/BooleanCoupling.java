@@ -10,31 +10,13 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
-public class BooleanCoupling extends Coupling {
+public class BooleanCoupling {
 	Token token;
-	ValueCoupling vc1 = null, vc2 = null;
-	MathCoupling mc1 = null, mc2 = null;
-	
-	// Overloaded Constructors for all four possibilities of boolean coupling.
-	public BooleanCoupling(Token t, ValueCoupling o1, ValueCoupling o2) {
+	Object oc1, oc2;
+	public BooleanCoupling(Token t, Object o1, Object o2) {
 		token = t;
-		vc1 = o1;
-		vc2 = o2;
-	}
-	public BooleanCoupling(Token t, MathCoupling o1, ValueCoupling o2) {
-		token = t;
-		mc1 = o1;
-		vc2 = o2;
-	}
-	public BooleanCoupling(Token t, ValueCoupling o1, MathCoupling o2) {
-		token = t;
-		vc1 = o1;
-		mc2 = o2;
-	}
-	public BooleanCoupling(Token t, MathCoupling o1, MathCoupling o2) {
-		token = t;
-		mc1 = o1;
-		mc2 = o2;
+		oc1 = o1;
+		oc2 = o2;
 	}
 	
 	public void printGrammar(){
@@ -58,29 +40,32 @@ public class BooleanCoupling extends Coupling {
 			System.out.println("<relative_op> -> le_operator");
 		}
 		
-		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
-			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());
+		if(oc1 instanceof ValueCoupling && oc2 instanceof ValueCoupling) { // Both objects are ValueCoupling
+			System.out.println("<arithmetic_expression> -> " + ((ValueCoupling) oc1).valueType() + "\n<arithmetic_expression> -> "
+					+ ((ValueCoupling) oc2).valueType());
 			System.out.println(token.getLexeme() + " -> <relative_op>");
-			vc1.printGrammar();
-			vc2.printGrammar();
+			((ValueCoupling) oc1).printGrammar();
+			((ValueCoupling) oc2).printGrammar();
 		}
-		else if(mc1 != null && vc2 != null) { // First object is a MathCoupling
-			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> " + vc2.valueType());
+		else if(oc1 instanceof MathCoupling && oc2 instanceof ValueCoupling) { // First object is a MathCoupling
+			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> " 
+					+ ((ValueCoupling) oc2).valueType());
 			System.out.println(token.getLexeme() + " -> <relative_op>");
-			mc1.printGrammar();
-			vc2.printGrammar();
+			((MathCoupling) oc1).printGrammar();
+			((ValueCoupling) oc2).printGrammar();
 		}
-		else if(vc1 != null && mc2 != null) { // Second object is a MathCoupling
-			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> <binary_expression>");
+		else if(oc1 instanceof ValueCoupling && oc2 instanceof MathCoupling) { // Second object is a MathCoupling
+			System.out.println("<arithmetic_expression> -> " + ((ValueCoupling) oc1).valueType() 
+					+ "\n<arithmetic_expression> -> <binary_expression>");
 			System.out.println(token.getLexeme() + " -> <reletive_op>");
-			vc1.printGrammar();
-			mc2.printGrammar();
+			((ValueCoupling) oc1).printGrammar();
+			((MathCoupling) oc2).printGrammar();
 		}
 		else { // Both objects are MathCoupling
 			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> <binary_expression>");
 			System.out.println(token.getLexeme() + " -> <reletive_op>");
-			mc1.printGrammar();
-			mc2.printGrammar();
+			((MathCoupling) oc1).printGrammar();
+			((MathCoupling) oc2).printGrammar();
 		}
 	}
 }

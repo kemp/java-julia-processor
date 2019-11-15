@@ -8,13 +8,14 @@
 package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
+import java.util.ArrayList;
 
-public class WhileCoupling extends Coupling {
+public class WhileCoupling {
 	Token whileToken, endToken;
 	BooleanCoupling bc;
-	TokenOrCouplingList block;
+	ArrayList<Object> block;
 	Parser blockParse;
-	public WhileCoupling(Token wt, Token et, BooleanCoupling bc1, TokenOrCouplingList b) {
+	public WhileCoupling(Token wt, Token et, BooleanCoupling bc1, ArrayList<Object> b) {
 		whileToken = wt;
 		endToken = et;
 		bc = bc1;

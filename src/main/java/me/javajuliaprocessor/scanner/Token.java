@@ -7,9 +7,7 @@
  */
 package me.javajuliaprocessor.scanner;
 
-import me.javajuliaprocessor.TokenOrCoupling;
-
-public class Token extends TokenOrCoupling {
+public class Token {
     private TokenType type;
     private String lexeme;
     private int lineNumber;

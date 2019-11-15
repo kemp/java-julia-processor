@@ -9,29 +9,24 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-public class PrintCoupling extends Coupling {
+public class PrintCoupling {
 	Token token;
-	ValueCoupling vc = null;
-	MathCoupling mc = null;
+	Object oc;
 	
-	public PrintCoupling(Token t, ValueCoupling v) {
+	public PrintCoupling(Token t, Object o) {
 		token = t;
-		vc = v;
-	}
-	public PrintCoupling(Token t, MathCoupling m) {
-		token = t;
-		mc = m;
+		oc = o;
 	}
 	
 	public void PrintGrammar() {
 		System.out.println("<print_statement> -> print(<arithmetic_expression>)");
-		if(vc != null) { // arithmetic expression was a literal integer or an identifier
-			System.out.println("<arithmetic_exprssion> -> " + vc.valueType());
-			vc.printGrammar();
+		if(oc instanceof ValueCoupling) { // arithmetic expression was a literal integer or an identifier
+			System.out.println("<arithmetic_exprssion> -> " + ((ValueCoupling) oc).valueType());
+			((ValueCoupling) oc).printGrammar();
 		}
-		else{ // arithmetic expression was a binary expression
+		else{ // arithmetic expression was a binary expression (Math)
 			System.out.println("<arithmetic_expression> -> <binary_expression>");
-			mc.printGrammar();
+			((MathCoupling) oc).printGrammar();
 		}
 	}
 }
