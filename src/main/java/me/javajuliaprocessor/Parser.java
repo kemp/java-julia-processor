@@ -197,6 +197,22 @@ public class Parser {
 		}
 		
 		// Assignment and Print statements
+		for(int i = 0; i < tokens.size(); i++) {
+			if(tokens.get(i) instanceof Token) {
+				if((tokens.get(i - 1) instanceof ValueCoupling && ((ValueCoupling)tokens.get(i - 1)).token.getType() == TokenType.IDENTIFIER) 
+						&& (tokens.get(i) instanceof ValueCoupling || tokens.get(i) instanceof MathCoupling)) {
+					if(((Token) tokens.get(i)).getType() == TokenType.ASSIGN_OP) {
+						AssignmentCoupling coupling = new AssignmentCoupling((Token) tokens.get(i), tokens.get(i - 1), tokens.get(i + 1));
+						tokens.set(i, coupling);
+						tokens.remove(i - 1);
+						tokens.remove(i + 1);
+					}
+				}
+				else{
+					//error
+				}
+			}
+		}
 		
 		// Loops and if statements
 		
