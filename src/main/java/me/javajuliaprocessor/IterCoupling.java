@@ -11,54 +11,41 @@ import me.javajuliaprocessor.scanner.Token;
 
 public class IterCoupling {
 	Token colonToken;
-	ValueCoupling vc1 = null, vc2 = null;
-	MathCoupling mc1 = null, mc2 = null;
-	public IterCoupling(Token t, ValueCoupling o1, ValueCoupling o2) {
+	Object oc1, oc2;
+	public IterCoupling(Token t, Object o1, Object o2) {
 		colonToken = t;
-		vc1 = o1;
-		vc2 = o2;
-	}
-	public IterCoupling(Token t, MathCoupling o1, ValueCoupling o2) {
-		colonToken = t;
-		mc1 = o1;
-		vc2 = o2;
-	}
-	public IterCoupling(Token t, ValueCoupling o1, MathCoupling o2) {
-		colonToken = t;
-		vc1 = o1;
-		mc2 = o2;
-	}
-	public IterCoupling(Token t, MathCoupling o1, MathCoupling o2) {
-		colonToken = t;
-		mc1 = o1;
-		mc2 = o2;
+		oc1 = o1;
+		oc2 = o2;
 	}
 	
 	public void printGrammar(){
 		System.out.println("<iter> -> <arithmetic_expression> : <arithmetic_expression>");
-		if(vc1 != null && vc2 != null) { // Both objects are ValueCoupling
-			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> " + vc2.valueType());
-			vc1.printGrammar();
+		if(oc1 instanceof ValueCoupling && oc2 instanceof ValueCoupling) { // Both objects are ValueCoupling
+			System.out.println("<arithmetic_expression> -> " + ((ValueCoupling) oc1).valueType() + "\n<arithmetic_expression> -> " 
+					+ ((ValueCoupling) oc2).valueType());
+			((ValueCoupling) oc1).printGrammar();
 			System.out.println(": -> :");
-			vc2.printGrammar();
+			((ValueCoupling) oc2).printGrammar();
 		}
-		else if(mc1 != null && vc2 != null) { // First object is a MathCoupling
-			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> " + vc2.valueType());
-			mc1.printGrammar();
+		else if(oc1 instanceof MathCoupling && oc2 instanceof ValueCoupling) { // First object is a MathCoupling
+			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> " 
+					+ ((ValueCoupling) oc2).valueType());
+			((MathCoupling) oc1).printGrammar();
 			System.out.println(": -> :");
-			vc2.printGrammar();
+			((ValueCoupling) oc2).printGrammar();
 		}
-		else if(vc1 != null && mc2 != null) { // Second object is a MathCoupling
-			System.out.println("<arithmetic_expression> -> " + vc1.valueType() + "\n<arithmetic_expression> -> <binary_expression>");
-			vc1.printGrammar();
+		else if(oc1 instanceof ValueCoupling && oc2 instanceof MathCoupling) { // Second object is a MathCoupling
+			System.out.println("<arithmetic_expression> -> " + ((ValueCoupling) oc1).valueType() 
+					+ "\n<arithmetic_expression> -> <binary_expression>");
+			((ValueCoupling) oc1).printGrammar();
 			System.out.println(": -> :");
-			mc2.printGrammar();
+			((MathCoupling) oc2).printGrammar();
 		}
 		else { // Both objects are MathCoupling
 			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> <binary_expression>");
-			mc1.printGrammar();
+			((MathCoupling) oc1).printGrammar();
 			System.out.println(": -> :");
-			mc2.printGrammar();
+			((MathCoupling) oc2).printGrammar();
 		}
 	}
 }

@@ -225,7 +225,25 @@ public class Parser {
 		}
 		
 		// Loops and if statements
-		for(int i = 0; i < tokens.size(); i++) {
+		
+		for(int i = 0; i < tokens.size(); i++) { // Iterators
+			if(tokens.get(i) instanceof Token) {
+				if((tokens.get(i - 1) instanceof ValueCoupling || tokens.get(i - 1) instanceof MathCoupling) 
+						&& (tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)) { // error checker
+					if(((Token) tokens.get(i)).getType() == TokenType.ITERATOR) {
+						IterCoupling coupling = new IterCoupling((Token) tokens.get(i), tokens.get(i - 1), tokens.get(i + 1));
+						tokens.set(i, coupling);
+						tokens.remove(i - 1);
+						tokens.remove(i + 1);
+					}
+				}
+				else {
+					//error
+				}
+			}
+		}
+		
+		for(int i = 0; i < tokens.size(); i++) { // If Statement
 			if(tokens.get(i) instanceof Token) {
 				if(tokens.get(i + 1) instanceof BooleanCoupling) { // error check
 					if(((Token) tokens.get(i)).getType() == TokenType.IF) {
@@ -287,7 +305,7 @@ public class Parser {
 			}
 		}
 		
-		// Loops (For and While)
+		
 		
 		return tokens;
 	}
