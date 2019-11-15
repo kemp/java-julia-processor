@@ -18,7 +18,7 @@ public class PrintCoupling {
 		oc = o;
 	}
 	
-	public void PrintGrammar() {
+	public void printGrammar() {
 		System.out.println("<print_statement> -> print(<arithmetic_expression>)");
 		if(oc instanceof ValueCoupling) { // arithmetic expression was a literal integer or an identifier
 			System.out.println("<arithmetic_exprssion> -> " + ((ValueCoupling) oc).valueType());

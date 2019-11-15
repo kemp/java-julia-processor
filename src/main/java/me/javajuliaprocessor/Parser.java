@@ -442,5 +442,61 @@ public class Parser {
 
 	public void printGrammar() {
 		// Method for printing the grammar of the program.
+		// for each with an if else to determine what the coupling is. then print front grammar as needed.
+		System.out.println("<Program> -> function id () <block> end");
+		if(tokens.get(1) instanceof ValueCoupling && ((ValueCoupling) tokens.get(1)).token.getType() == TokenType.IDENTIFIER){
+			((ValueCoupling) tokens.get(1)).printGrammar();
+		}
+		for(int i = 4; i < tokens.size(); i++) {
+			if(tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
+					|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
+					|| tokens.get(i + 1) instanceof PrintCoupling) {
+				System.out.println("<block> -> <statement> <block>");
+				if(tokens.get(i) instanceof IfCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((IfCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof ForCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((ForCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof WhileCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((WhileCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof AssignmentCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((AssignmentCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((PrintCoupling) tokens.get(i)).printGrammar();
+				}
+			}
+			else {
+				System.out.println("<block> -> <statement>");
+				if(tokens.get(i) instanceof IfCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((IfCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof ForCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((ForCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof WhileCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((WhileCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof AssignmentCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((AssignmentCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((PrintCoupling) tokens.get(i)).printGrammar();
+				}
+				System.out.println("end -> end");
+			}
+		}
 	}
 }
