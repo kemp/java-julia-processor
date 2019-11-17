@@ -10,6 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
+//Class to hold the boolean expressions found in the code and output their grammar
 public class BooleanCoupling {
 	Token token;
 	Object oc1, oc2;

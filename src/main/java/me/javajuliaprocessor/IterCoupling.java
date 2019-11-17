@@ -9,6 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
+//Class to hold the iterator expressions found in the code and output their grammar
 public class IterCoupling {
 	Token colonToken;
 	Object oc1, oc2;

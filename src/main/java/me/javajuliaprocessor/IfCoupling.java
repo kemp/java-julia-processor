@@ -10,6 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import java.util.ArrayList;
 
+//Class to hold the if statements found in the code and output their grammar
 public class IfCoupling {
 	Token ifToken, elseToken, endToken;
 	Object oc;

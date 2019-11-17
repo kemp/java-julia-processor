@@ -10,6 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import java.util.ArrayList;
 
+//Class to hold the while loops found in the code and output their grammar
 public class WhileCoupling {
 	Token whileToken, endToken;
 	Object bc;

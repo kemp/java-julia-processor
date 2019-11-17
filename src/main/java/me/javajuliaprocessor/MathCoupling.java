@@ -10,6 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
+//Class to hold the math expressions found in the code and output their grammar
 public class MathCoupling {
 	Token token;
 	Object oc1, oc2;

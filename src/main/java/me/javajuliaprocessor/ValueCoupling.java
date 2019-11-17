@@ -10,6 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
+//Class to hold the literal integer and identifiers found in the code and output their grammar
 public class ValueCoupling {
 	Token token;
 	public ValueCoupling(Token t) {

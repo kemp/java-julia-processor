@@ -21,8 +21,7 @@ public class Parser {
 	/*
 	 * This method will iterate through the token list and replace all the token
 	 * with coupled values and statements in order to output the proper grammar.
-	 * This should also handle some form of error handling in order to make sure
-	 * that the program will run correctly.
+	 * It also handles errors if there are any in the code.
 	 */
 	public ArrayList<Object> parse() {
 		for (int i = 0; i < tokens.size(); i++) {

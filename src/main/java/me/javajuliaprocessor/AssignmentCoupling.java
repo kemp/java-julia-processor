@@ -9,6 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
+// Class to hold the assignment statements found in the code and output their grammar
 public class AssignmentCoupling {
 	Token token;
 	Object oc1, oc2;

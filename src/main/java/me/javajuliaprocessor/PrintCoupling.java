@@ -9,6 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
+//Class to hold the print statements found in the code and output their grammar
 public class PrintCoupling {
 	Token token;
 	Object oc;

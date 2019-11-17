@@ -9,6 +9,8 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 import java.util.ArrayList;
+
+//Class to hold the for loops found in the code and output their grammar
 public class ForCoupling {
 
 	Token forToken, equalToken, endToken;
