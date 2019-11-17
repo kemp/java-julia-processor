@@ -32,7 +32,7 @@ public class WhileCoupling {
 		System.out.println("<while_statement> -> while <boolean_expression> <block> end");
 		System.out.println("while -> while");
 		((BooleanCoupling) bc).printGrammar();
-		blockParse.printGrammar();
+		blockParse.controlStatementPrintGrammar();
 		System.out.println("end -> end");
 	}
 }

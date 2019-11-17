@@ -36,7 +36,7 @@ public class ForCoupling {
 		((ValueCoupling) id).printGrammar();
 		System.out.println("= -> <assignment_operator>");
 		((IterCoupling) iter).printGrammar();
-		blockParse.printGrammar();
+		blockParse.controlStatementPrintGrammar();
 		System.out.println("end -> end");
 	}
 }

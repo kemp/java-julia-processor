@@ -24,7 +24,7 @@ public class AssignmentCoupling {
 		((ValueCoupling) oc1).printGrammar();
 		System.out.println(token.getLexeme() + " -> <assignment_operator>");
 		if(oc2 instanceof ValueCoupling) { // arithmetic expression is a literal integer or id 
-			System.out.println("<arithmetic_expression> ->" + ((ValueCoupling) oc2).valueType());
+			System.out.println("<arithmetic_expression> -> " + ((ValueCoupling) oc2).valueType());
 			((ValueCoupling) oc2).printGrammar();
 		}
 		else { // arithmetic expression is a binary expression

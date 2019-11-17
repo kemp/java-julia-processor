@@ -48,7 +48,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: ^ <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -65,7 +67,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: * <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -82,7 +86,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: / <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -99,7 +105,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: \\ <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -116,7 +124,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: % <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -133,7 +143,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: + <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -150,7 +162,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: - <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -168,7 +182,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: < <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				} else if (((Token) tokens.get(i)).getType() == TokenType.GT_OP) { // gt op
 					if ((tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)
@@ -180,7 +196,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: > <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				} else if (((Token) tokens.get(i)).getType() == TokenType.NE_OP) { // not eq op
 					if ((tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)
@@ -192,7 +210,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: != <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				} else if (((Token) tokens.get(i)).getType() == TokenType.EQ_OP) { // eq op
 					if ((tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)
@@ -204,7 +224,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: == <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				} else if (((Token) tokens.get(i)).getType() == TokenType.GE_OP) {// ge op
 					if ((tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)
@@ -216,7 +238,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: >= <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				} else if (((Token) tokens.get(i)).getType() == TokenType.LE_OP) { // le op
 					if ((tokens.get(i + 1) instanceof ValueCoupling || tokens.get(i + 1) instanceof MathCoupling)
@@ -228,7 +252,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: <= <Math Value> <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -243,10 +269,13 @@ public class Parser {
 						IterCoupling coupling = new IterCoupling((Token) tokens.get(i), tokens.get(i - 1),
 								tokens.get(i + 1));
 						tokens.set(i, coupling);
-						tokens.remove(i - 1);
 						tokens.remove(i + 1);
+						tokens.remove(i - 1);
+						i--;
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: <Math Value> : <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -264,10 +293,13 @@ public class Parser {
 						AssignmentCoupling coupling = new AssignmentCoupling((Token) tokens.get(i), tokens.get(i - 1),
 								tokens.get(i + 1));
 						tokens.set(i, coupling);
-						tokens.remove(i - 1);
 						tokens.remove(i + 1);
+						tokens.remove(i - 1);
+						i--;
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: <Math Value> = <Math Value>");
+						System.exit(0);
 					}
 				}
 			}
@@ -282,7 +314,9 @@ public class Parser {
 						tokens.remove(i + 1);
 						tokens.remove(i + 1);
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: print ( <Math Value> )");
+						System.exit(0);
 					}
 				}
 			}
@@ -311,7 +345,9 @@ public class Parser {
 							}
 						}
 						if (elseIndex == i) {
-							// error due to not enough elses
+							System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+									+ "\nNo matching else statement");
+							System.exit(0);
 						}
 						for (int j = elseIndex + 1; j < tokens.size(); j++) {
 							if (tokens.get(j) instanceof Token) {
@@ -330,7 +366,9 @@ public class Parser {
 							}
 						}
 						if (endIndex == i) {
-							// error due to not enough ends
+							System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+									+ "\nNo matching end statement");
+							System.exit(0);
 						}
 
 						for (int j = i + 2; j < elseIndex; j++) {
@@ -343,10 +381,12 @@ public class Parser {
 								(Token) tokens.get(endIndex), tokens.get(i + 1), ifBlock, elseBlock);
 						tokens.set(i, coupling);
 						for (int j = i; j < endIndex; j++) {
-							tokens.remove(j + 1);
+							tokens.remove(i + 1);
 						}
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: if <Boolean Expression> <Block of Code> else <Block of Code> end");
+						System.exit(0);
 					}
 				}
 			}
@@ -378,7 +418,9 @@ public class Parser {
 							}
 						}
 						if (endIndex == i) {
-							// error due to not enough ends
+							System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+									+ "\nNo matching end statement");
+							System.exit(0);
 						}
 
 						for (int j = i + 4; j < endIndex; j++) {
@@ -388,10 +430,12 @@ public class Parser {
 								(Token) tokens.get(endIndex), tokens.get(i + 1), tokens.get(i + 3), forBlock);
 						tokens.set(i, coupling);
 						for (int j = i; j < endIndex; j++) {
-							tokens.remove(j + 1);
+							tokens.remove(i + 1);
 						}
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: for identifier = <Iterator> <Block of Code> end");
+						System.exit(0);
 					}
 				}
 			}
@@ -420,7 +464,9 @@ public class Parser {
 							}
 						}
 						if (endIndex == i) {
-							// error due to not enough ends
+							System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+									+ "\nNo matching end statement");
+							System.exit(0);
 						}
 
 						for (int j = i + 2; j < endIndex; j++) {
@@ -430,10 +476,12 @@ public class Parser {
 								tokens.get(i + 1), whileBlock);
 						tokens.set(i, coupling);
 						for (int j = i; j < endIndex; j++) {
-							tokens.remove(j + 1);
+							tokens.remove(i + 1);
 						}
 					} else {
-						// error
+						System.out.println("Line number: " + ((Token) tokens.get(i)).getLineNumber() 
+								+ "\nExpected: while <Boolean Expression> <Block of Code> end");
+						System.exit(0);
 					}
 				}
 			}
@@ -444,15 +492,14 @@ public class Parser {
 
 	public void printGrammar() {
 		// Method for printing the grammar of the program.
-		// for each with an if else to determine what the coupling is. then print front grammar as needed.
-		System.out.println("<Program> -> function id () <block> end");
+		System.out.println("\n<Program> -> function id () <block> end");
 		if(tokens.get(1) instanceof ValueCoupling && ((ValueCoupling) tokens.get(1)).token.getType() == TokenType.IDENTIFIER){
 			((ValueCoupling) tokens.get(1)).printGrammar();
 		}
 		for(int i = 4; i < tokens.size(); i++) {
-			//if(tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
-			//		|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
-			//		|| tokens.get(i + 1) instanceof PrintCoupling) {
+			if((i != tokens.size() - 1) && (tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
+					|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
+					|| tokens.get(i + 1) instanceof PrintCoupling)) {
 				System.out.println("<block> -> <statement> <block>");
 				if(tokens.get(i) instanceof IfCoupling) {
 					System.out.println("<statement> -> <if_statement>");
@@ -474,32 +521,86 @@ public class Parser {
 					System.out.println("<statement> -> <print_statement>");
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
-				//System.out.println("" + tokens.get(i).getClass());
-			//}
-			/*else {
+			}
+			else {
 				System.out.println("<block> -> <statement>");
 				if(tokens.get(i) instanceof IfCoupling) {
 					System.out.println("<statement> -> <if_statement>");
 					((IfCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof ForCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <for_statement>");
 					((ForCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof WhileCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <while_statement>");
 					((WhileCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof AssignmentCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <assignment_statement>");
 					((AssignmentCoupling) tokens.get(i)).printGrammar();
 				}
 				else if(tokens.get(i) instanceof PrintCoupling) {
-					System.out.println("<statement> -> <if_statement>");
+					System.out.println("<statement> -> <print_statement>");
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
 				System.out.println("end -> end");
-			}*/
+				break;
+			}
+		}
+	}
+	
+	public void controlStatementPrintGrammar() { // For printing the grammar of the block of the control statements
+		for(int i = 0; i < tokens.size(); i++) {
+			if((i != tokens.size() - 1) && (tokens.get(i + 1) instanceof IfCoupling || tokens.get(i + 1) instanceof AssignmentCoupling 
+					|| tokens.get(i + 1) instanceof ForCoupling || tokens.get(i + 1) instanceof WhileCoupling 
+					|| tokens.get(i + 1) instanceof PrintCoupling)) {
+				System.out.println("<block> -> <statement> <block>");
+				if(tokens.get(i) instanceof IfCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((IfCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof ForCoupling) {
+					System.out.println("<statement> -> <for_statement>");
+					((ForCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof WhileCoupling) {
+					System.out.println("<statement> -> <while_statement>");
+					((WhileCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof AssignmentCoupling) {
+					System.out.println("<statement> -> <assignment_statement>");
+					((AssignmentCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					System.out.println("<statement> -> <print_statement>");
+					((PrintCoupling) tokens.get(i)).printGrammar();
+				}
+			}
+			else {
+				System.out.println("<block> -> <statement>");
+				if(tokens.get(i) instanceof IfCoupling) {
+					System.out.println("<statement> -> <if_statement>");
+					((IfCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof ForCoupling) {
+					System.out.println("<statement> -> <for_statement>");
+					((ForCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof WhileCoupling) {
+					System.out.println("<statement> -> <while_statement>");
+					((WhileCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof AssignmentCoupling) {
+					System.out.println("<statement> -> <assignment_statement>");
+					((AssignmentCoupling) tokens.get(i)).printGrammar();
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					System.out.println("<statement> -> <print_statement>");
+					((PrintCoupling) tokens.get(i)).printGrammar();
+				}
+				break;
+			}
 		}
 	}
 }

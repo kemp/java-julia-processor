@@ -46,6 +46,7 @@ public class BooleanCoupling {
 			System.out.println(token.getLexeme() + " -> <relative_op>");
 			((ValueCoupling) oc1).printGrammar();
 			((ValueCoupling) oc2).printGrammar();
+			preFixPrint();
 		}
 		else if(oc1 instanceof MathCoupling && oc2 instanceof ValueCoupling) { // First object is a MathCoupling
 			System.out.println("<arithmetic_expression> -> <binary_expression>" + "\n<arithmetic_expression> -> " 
@@ -67,5 +68,9 @@ public class BooleanCoupling {
 			((MathCoupling) oc1).printGrammar();
 			((MathCoupling) oc2).printGrammar();
 		}
+	}
+	
+	private void preFixPrint() {
+		System.out.println("" + token.getLexeme() + " " + ((ValueCoupling) oc1).token.getLexeme() + " " + ((ValueCoupling) oc2).token.getLexeme());
 	}
 }

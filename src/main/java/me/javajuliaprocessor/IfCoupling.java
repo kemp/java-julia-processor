@@ -36,9 +36,9 @@ public class IfCoupling {
 		System.out.println("<if_statement> -> if <boolean_expression> <block> else <block> end");
 		System.out.println("if -> if");
 		((BooleanCoupling) oc).printGrammar();
-		block1Parse.printGrammar();
+		block1Parse.controlStatementPrintGrammar();
 		System.out.println("else -> else");
-		block2Parse.printGrammar();
+		block2Parse.controlStatementPrintGrammar();
 		System.out.println("end -> end");
 	}
 }
