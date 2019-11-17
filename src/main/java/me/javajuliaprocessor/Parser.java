@@ -349,7 +349,7 @@ public class Parser {
 									+ "\nNo matching else statement");
 							System.exit(0);
 						}
-						for (int j = elseIndex + 1; j < tokens.size(); j++) {
+						for (int j = elseIndex + 1; j < tokens.size() - 1; j++) {
 							if (tokens.get(j) instanceof Token) {
 								if (((Token) tokens.get(j)).getType() == TokenType.ELSE
 										|| ((Token) tokens.get(j)).getType() == TokenType.WHILE
@@ -401,7 +401,7 @@ public class Parser {
 							&& tokens.get(i + 3) instanceof IterCoupling) { // error checker
 						int endCount = 0, endIndex = i;
 						ArrayList<Object> forBlock = new ArrayList<Object>();
-						for (int j = i + 1; j < tokens.size(); j++) {
+						for (int j = i + 1; j < tokens.size() - 1; j++) {
 							if (tokens.get(j) instanceof Token) {
 								if (((Token) tokens.get(j)).getType() == TokenType.ELSE
 										|| ((Token) tokens.get(j)).getType() == TokenType.WHILE
@@ -447,7 +447,7 @@ public class Parser {
 					if (tokens.get(i + 1) instanceof BooleanCoupling) { // error checker
 						int endCount = 0, endIndex = i;
 						ArrayList<Object> whileBlock = new ArrayList<Object>();
-						for (int j = i + 1; j < tokens.size(); j++) {
+						for (int j = i + 1; j < tokens.size() - 1; j++) {
 							if (tokens.get(j) instanceof Token) {
 								if (((Token) tokens.get(j)).getType() == TokenType.ELSE
 										|| ((Token) tokens.get(j)).getType() == TokenType.WHILE
@@ -486,7 +486,6 @@ public class Parser {
 				}
 			}
 		}
-		
 		return tokens;
 	}
 
