@@ -4,7 +4,7 @@ A language processor for Julia written in Java.
 
 It has three parts:
 1. [Scanner](./src/main/java/me/javajuliaprocessor/Scanner.java)
-2. Parser
+2. [Parser](./src/main/java/me/javajuliaprocessor/Parser.java)
 3. Interpreter
 
 This is a school project for CS 4308 Concepts of Programming Languages.
@@ -20,7 +20,7 @@ This is a school project for CS 4308 Concepts of Programming Languages.
 
 ```bash
 $ mvn package
-$ java -jar target/JavaJuliaProcessor-2.0-SNAPSHOT.jar [file]
+$ java -jar target/JavaJuliaProcessor-3.0-SNAPSHOT.jar [file]
 ```
 
 Note: `[file]` is the path to the Julia file you want to parse
