@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-// Class to hold the assignment statements found in the code and output their grammar
+// Class to hold the assignment statements found in the code and output their grammar/Interpret
 public class AssignmentCoupling {
 	Token token;
 	Object oc1, oc2;
@@ -31,6 +31,15 @@ public class AssignmentCoupling {
 		else { // arithmetic expression is a binary expression
 			System.out.println("<arithmetic_expression> -> <binary_expression>");
 			((MathCoupling) oc2).printGrammar();
+		}
+	}
+	
+	public Identifier interpret() {
+		if(oc2 instanceof ValueCoupling) { // arithmetic expression is a literal integer or id 
+			return new Identifier(((ValueCoupling) oc1).getLexeme(), ((ValueCoupling) oc2).interpret());
+		}
+		else { // arithmetic expression is a binary expression
+			return new Identifier(((ValueCoupling) oc1).getLexeme(), ((MathCoupling) oc2).interpret());
 		}
 	}
 }

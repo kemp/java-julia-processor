@@ -10,11 +10,13 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
-//Class to hold the literal integer and identifiers found in the code and output their grammar
+//Class to hold the literal integer and identifiers found in the code and output their grammar/Interpret
 public class ValueCoupling {
 	Token token;
-	public ValueCoupling(Token t) {
+	IdentifierTable it;
+	public ValueCoupling(Token t, IdentifierTable i) {
 		token = t;
+		it = i;
 	}
 	
 	public String valueType() {
@@ -24,6 +26,10 @@ public class ValueCoupling {
 			return "<id>";
 	}
 	
+	public String getLexeme() {
+		return token.getLexeme();
+	}
+	
 	public void printGrammar() {
 		if(token.getType() == TokenType.INT_CONSTANT) {
 			System.out.println(token.getLexeme() + " -> <literal_integer>");
@@ -31,5 +37,12 @@ public class ValueCoupling {
 		else if(token.getType() == TokenType.IDENTIFIER) {
 			System.out.println(token.getLexeme() + " -> <id>");
 		}
+	}
+	
+	public int interpret() {
+		if(token.getType() == TokenType.INT_CONSTANT)
+			return Integer.parseInt(token.getLexeme());
+		else
+			return it.getValue(token.getLexeme(), token);
 	}
 }

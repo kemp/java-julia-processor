@@ -57,6 +57,9 @@ public class Main {
 
             System.out.println("Printing the grammer of the program...");
             parser.printGrammar();
+            
+            System.out.println("Interpreting the program... \n");
+            parser.interpret();
 
         } catch (IOException e) {
             System.err.println("The file could not be opened.");

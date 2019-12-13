@@ -13,22 +13,27 @@ import java.util.ArrayList;
 
 public class Parser {
 	private ArrayList<Object> tokens;
+	private IdentifierTable IT;
 
 	public Parser(ArrayList<Object> t) {
 		tokens = t;
+		IT = new IdentifierTable();
 	}
 
 	/*
 	 * This method will iterate through the token list and replace all the token
 	 * with coupled values and statements in order to output the proper grammar.
 	 * It also handles errors if there are any in the code.
+	 * After it has parsed the entire program the main method will call
+	 * its interpret method that will then iterate through the couplings
+	 * and execute the input program.
 	 */
 	public ArrayList<Object> parse() {
 		for (int i = 0; i < tokens.size(); i++) {
 			if (tokens.get(i) instanceof Token) {
 				if (((Token) tokens.get(i)).getType() == TokenType.INT_CONSTANT
 						|| ((Token) tokens.get(i)).getType() == TokenType.IDENTIFIER) { // Literal Int or Identifier
-					ValueCoupling value = new ValueCoupling((Token) tokens.get(i));
+					ValueCoupling value = new ValueCoupling((Token) tokens.get(i), IT);
 					tokens.set(i, value);
 				}
 			}
@@ -542,7 +547,7 @@ public class Parser {
 					System.out.println("<statement> -> <print_statement>");
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
-				System.out.println("end -> end");
+				System.out.println("end -> end\n");
 				break;
 			}
 		}
@@ -598,6 +603,28 @@ public class Parser {
 					((PrintCoupling) tokens.get(i)).printGrammar();
 				}
 				break;
+			}
+		}
+	}
+	
+	public void interpret() {
+		for(int i = 4; i < tokens.size(); i++) {
+			if((i != tokens.size() - 1) && (tokens.get(i + 1) instanceof AssignmentCoupling || tokens.get(i + 1) instanceof PrintCoupling)) {
+				if(tokens.get(i) instanceof AssignmentCoupling) {
+					IT.addIdentifier(((AssignmentCoupling) tokens.get(i)).interpret());
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					((PrintCoupling) tokens.get(i)).interpret();
+				}
+			}
+			else {
+				if(tokens.get(i) instanceof AssignmentCoupling) {
+					((AssignmentCoupling) tokens.get(i)).interpret();
+				}
+				else if(tokens.get(i) instanceof PrintCoupling) {
+					((PrintCoupling) tokens.get(i)).interpret();
+				break;
+				}
 			}
 		}
 	}

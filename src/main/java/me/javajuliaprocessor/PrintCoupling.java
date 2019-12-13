@@ -9,7 +9,7 @@ package me.javajuliaprocessor;
 
 import me.javajuliaprocessor.scanner.Token;
 
-//Class to hold the print statements found in the code and output their grammar
+//Class to hold the print statements found in the code and output their grammar/Interpret
 public class PrintCoupling {
 	Token token;
 	Object oc;
@@ -28,6 +28,15 @@ public class PrintCoupling {
 		else{ // arithmetic expression was a binary expression (Math)
 			System.out.println("<arithmetic_expression> -> <binary_expression>");
 			((MathCoupling) oc).printGrammar();
+		}
+	}
+	
+	public void interpret() {
+		if(oc instanceof ValueCoupling) { // arithmetic expression was a literal integer or an identifier
+			System.out.println("" + ((ValueCoupling) oc).interpret());
+		}
+		else{ // arithmetic expression was a binary expression (Math)
+			System.out.println("" + ((MathCoupling) oc).interpret());
 		}
 	}
 }

@@ -10,7 +10,7 @@ package me.javajuliaprocessor;
 import me.javajuliaprocessor.scanner.Token;
 import me.javajuliaprocessor.scanner.TokenType;
 
-//Class to hold the math expressions found in the code and output their grammar
+//Class to hold the math expressions found in the code and output their grammar/Interpret
 public class MathCoupling {
 	Token token;
 	Object oc1, oc2;
@@ -77,5 +77,44 @@ public class MathCoupling {
 	
 	private void preFixPrint() {
 		System.out.println("" + token.getLexeme() + " " + ((ValueCoupling) oc1).token.getLexeme() + " " + ((ValueCoupling) oc2).token.getLexeme());
+	}
+	
+	public int interpret() {
+		if(oc1 instanceof ValueCoupling && oc2 instanceof ValueCoupling) { // Both objects are ValueCoupling
+			return calculate(((ValueCoupling) oc1).interpret(), ((ValueCoupling) oc2).interpret());
+		}
+		else if(oc1 instanceof MathCoupling && oc2 instanceof ValueCoupling) { // First object is a MathCoupling
+			return calculate(((MathCoupling) oc1).interpret(), ((ValueCoupling) oc2).interpret());
+		}
+		else if(oc1 instanceof ValueCoupling && oc2 instanceof MathCoupling) { // Second object is a MathCoupling
+			return calculate(((ValueCoupling) oc1).interpret(), ((MathCoupling) oc2).interpret());
+		}
+		else { // Both objects are MathCoupling
+			return calculate(((MathCoupling) oc1).interpret(), ((MathCoupling) oc2).interpret());
+		}
+	}
+	
+	private int calculate(int num1, int num2) {
+		if (token.getType() == TokenType.EXP_OP) {
+			return (int) Math.pow(num1, num2);
+		} 
+		else if (token.getType() == TokenType.MUL_OP) {
+			return (int) (num1 * num2);
+		} 
+		else if (token.getType() == TokenType.DIV_OP) {
+			return (int) (num1 / num2);
+		} 
+		else if (token.getType() ==TokenType.ADD_OP) {
+			return (int) (num1 + num2);
+		} 
+		else if (token.getType() == TokenType.SUB_OP) {
+			return (int) (num1 - num2);
+		} 
+		else if (token.getType() == TokenType.REV_DIV_OP) {
+			return (int) (num2 / num1);
+		} 
+		else { // Modulo operator
+			return (int) (num1 % num2);
+		}
 	}
 }
